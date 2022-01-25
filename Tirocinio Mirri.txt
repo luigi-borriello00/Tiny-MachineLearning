@@ -1,0 +1,15 @@
+Domande:
+- Proposte con IA/CyberSec?
+- Posso iniziare a febbraio?
+- Modulistica?
+- Avrò un ufficio?
+- Posso usarlo come tesi ?
+
+
+Prof:
+- Harduino con ML riconoscimento vibrazioni TinyML
+
+- Trad automatiche del testo e riconoscimento del testo
+scritto 
+
+- Riconoscimento stili nelle opere

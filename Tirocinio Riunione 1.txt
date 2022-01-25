@@ -1,0 +1,13 @@
+Idea:
+Addestramento esterno scritto in python
+
+File in C:
+    setup e loop eseguiti in continuazione
+
+
+Step:
+    Ripetere script e algoritmi e prendere mano.
+
+Lab 30-22
+
+obiettivo : Approcci TinyMl per riconoscimento di segnali.
