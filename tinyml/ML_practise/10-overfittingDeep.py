@@ -1,7 +1,7 @@
 """
     Cenni sul DeepLearning
         Apprendimento in profondità tramite reti neurali
-    Nello specifico vediamo come prevedere Overfitting (il modello impara a memoria e perde flessibilità)
+    Nello specifico vediamo come può essere causato Overfitting (il modello impara a memoria e perde flessibilità)
 
 """
 from sklearn.neural_network import MLPClassifier
