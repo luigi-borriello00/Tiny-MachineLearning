@@ -100,6 +100,7 @@ void loop() {
   // but only one of them would be high enough over 0.5~0.6
   //Serial.print("Predicting the Frequency: ");
   //Serial.println(words[prediction]);
+  Serial.print(" == > Pred: ");
   Serial.print(prediction);
   Serial.println("],");
 

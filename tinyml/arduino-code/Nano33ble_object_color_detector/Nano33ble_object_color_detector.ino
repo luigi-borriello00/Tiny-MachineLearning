@@ -21,7 +21,7 @@ void setup() {
   }
 
   // print the header
-  Serial.println("Red,Green,Blue,LightIntensity,Proximity");
+  Serial.println("Red,Green,Blue,LightIntensity,Proximity,Prediction");
 }
 
 void loop() {
@@ -60,6 +60,7 @@ void loop() {
   Serial.println();
 
   // wait for 1 second after one sampling/prediction
+  delay(1000);
   delay(400);
   digitalWrite(LED_BUILTIN, HIGH);
   delay(100);
