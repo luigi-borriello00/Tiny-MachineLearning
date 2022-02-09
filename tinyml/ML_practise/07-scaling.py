@@ -10,6 +10,8 @@ import pandas as pd
 import seaborn as sb
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import MinMaxScaler
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import accuracy_score
 
 ds = load_wine()
 
@@ -43,4 +45,28 @@ dfScaled = pd.DataFrame(X, columns=['Magnesium', 'Phenols'])
 grafico = sb.scatterplot(data=dfScaled, x=dfScaled['Magnesium'], y=dfScaled['Phenols'])
 plt.title("After scaling")
 plt.show()
+
+"""
+    Ora testiamo l'efficenza dello scaling
+"""
+
+# Accuratezza senza scalare
+X = ds['data']
+y = ds['target']
+model = KNeighborsClassifier()
+model.fit(X, y)
+predict = model.predict(X)
+acc_not_scaled = accuracy_score(y, predict)
+
+# Accuratezza scalando
+X_scaled = scaler.fit_transform(X)
+model2 = KNeighborsClassifier()
+model2.fit(X_scaled, y)
+predict_scaled = model2.predict(X_scaled)
+acc_scaled = accuracy_score(y, predict_scaled)
+
+print(f'Not scaled: {acc_not_scaled}, Scaled: {acc_scaled}')
+
+
+
 
