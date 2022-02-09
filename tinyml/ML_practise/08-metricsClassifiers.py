@@ -26,6 +26,11 @@ print(f'Accuracy = {acc}')
 cr = classification_report(y, p)
 print(cr)
 
+"""
+    Precisione: quante volte il modello ha detto SI ed era veramente SI
+    Richiamo: quante volte il modello ha detto SI rispetto alle volte in cui era da dire SI
+    F1-score: formula che combina Precisione e Richiamo
+"""
 skplt.metrics.plot_confusion_matrix(y, p)
 plt.show()
 
