@@ -28,8 +28,7 @@ p = model.predict(X)
 
 mea_train = mean_absolute_error(y_train, p_train)
 mea_test = mean_absolute_error(y_test, p_test)
-mea = mean_absolute_error(y, p)
-print(f'Train {mea_train}, Test {mea_test}, Total{mea}')
+print(f'Train {mea_train}, Test {mea_test}')
 
 # Plottiamo le varie predizioni e la linea di apprendimento generale del modello
 sns.scatterplot(x=X_train[:, 0], y=y_train)
