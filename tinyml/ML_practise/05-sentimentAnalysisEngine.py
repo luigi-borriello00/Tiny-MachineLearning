@@ -1,4 +1,5 @@
 # Pandas permette di includere file di molteplici tipologie (usato per caricare il csv)
+# e di gestire agevolmente strutture dati organizzate
 import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.model_selection import train_test_split
