@@ -18,9 +18,6 @@ print(ds['DESCR'])
 
 X = ds['data'][:, [4, 7]]
 
-scaler = MinMaxScaler()
-X = scaler.fit_transform(X)
-
 # Creo un DataFrame (struttura dati con etichette) con i valori presi in considerazione
 df = pd.DataFrame(X, columns=['Magnesium', 'Phenols'])
 
@@ -30,11 +27,20 @@ print(f'X = {X} \n DataFrame = {df}')
 grafico = sb.scatterplot(data=df, x=df['Magnesium'], y=df['Phenols'])
 # Setto i range da mostrare sugli assi (utile a vedere la differenza tra le due dimensioni)
 #grafico.set(xlim = (-10, 200), ylim = (-10, 200))
-
+plt.title("Before Scaling")
+plt.show()
 """
     Notiamo come la varianza sull'asse x sia molto più alta rispetto all'y quindi priviamo a effettuare
     lo scaling utilizzando MinMaxScale ==> prende gli estremi e compatta
 """
 
+scaler = MinMaxScaler()
+X = scaler.fit_transform(X)
+
+dfScaled = pd.DataFrame(X, columns=['Magnesium', 'Phenols'])
+
+# Plotto i dati del Df con seaborn
+grafico = sb.scatterplot(data=dfScaled, x=dfScaled['Magnesium'], y=dfScaled['Phenols'])
+plt.title("After scaling")
 plt.show()
 
