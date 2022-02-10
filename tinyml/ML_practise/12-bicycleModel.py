@@ -21,7 +21,7 @@ def trainAndTest(X, y):
     print(f'Errore Train {err_train}, Test {err_test}')
 
 
-df = pd.read_csv('ds/hour.csv')
+df = pd.read_csv('Notebooks/ds/hour.csv')
 
 y = df['cnt']
 col_to_remove = ['cnt', 'casual', 'registered', 'dteday', 'instant']
