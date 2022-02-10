@@ -7,6 +7,7 @@ from sklearn.metrics import mean_absolute_error
 from sklearn.linear_model import LinearRegression
 from sklearn.preprocessing import OneHotEncoder
 
+
 def trainAndTest(X, y):
     X_train, X_test, y_train, y_test = train_test_split(X, y)
 
@@ -18,6 +19,7 @@ def trainAndTest(X, y):
     p_test = model.predict(X_test)
     err_test = mean_absolute_error(y_test, p_test)
     print(f'Errore Train {err_train}, Test {err_test}')
+
 
 df = pd.read_csv('ds/hour.csv')
 
@@ -39,7 +41,8 @@ trainAndTest(X, y)
 
 
 transformers = [
-    ['oneHot', OneHotEncoder(), ['season', 'yr', 'mnth', 'hr', 'weekday', 'weathersit']]
+    ['oneHot', OneHotEncoder(), ['season', 'yr', 'mnth', 'hr', 'weekday', 'weathersit']],
+    ['scaler', RobustScaler(), ['temp', 'hum', 'atemp', 'windspeed']]
 ]
 
 cf = ColumnTransformer(transformers, remainder='passthrough')
@@ -51,9 +54,14 @@ trainAndTest(X, y)
 
 """
     Notiamo già un miglioramento
-"""
 
 
+transformers.append(['scaler', RobustScaler(), ['temp', 'hum', 'atemp', 'windspeed']])
+cf = ColumnTransformer(transformers, remainder='passthrough')
+
+X = cf.fit_transform(X)
+print("Dopo lo scaling: ")
+trainAndTest(X, y)"""
 
 
 
