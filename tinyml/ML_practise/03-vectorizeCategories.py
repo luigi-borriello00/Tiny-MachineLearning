@@ -13,6 +13,7 @@ X = [
 
 
 transformers = [
+    # ['nome trasformatore', encoder, [colonnaDaTrasformare]]
     ['cat_vect', OneHotEncoder(), [2]]
 ]
 
