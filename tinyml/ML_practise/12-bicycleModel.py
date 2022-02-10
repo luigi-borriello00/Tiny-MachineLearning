@@ -53,15 +53,9 @@ print("Dopo la trasformazione: ")
 trainAndTest(X, y)
 
 """
-    Notiamo già un miglioramento
-
-
-transformers.append(['scaler', RobustScaler(), ['temp', 'hum', 'atemp', 'windspeed']])
-cf = ColumnTransformer(transformers, remainder='passthrough')
-
-X = cf.fit_transform(X)
-print("Dopo lo scaling: ")
-trainAndTest(X, y)"""
+    Notiamo già un miglioramento con il Transformer mentre lo Scaling in questo caso si è rivelato
+    "inutile"
+"""
 
 
 
