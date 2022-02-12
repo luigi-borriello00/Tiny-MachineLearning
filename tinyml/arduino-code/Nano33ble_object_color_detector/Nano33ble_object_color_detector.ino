@@ -55,6 +55,7 @@ void loop() {
   Serial.print(',');
   Serial.print(p, 3);
   Serial.print(',');
+  Serial.print(" pred: ");
   Serial.print(prediction);
   Serial.print(']');
   Serial.println();

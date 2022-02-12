@@ -1,9 +1,6 @@
-Domande:
-- Proposte con IA/CyberSec?
-- Posso iniziare a febbraio?
-- Modulistica?
-- Avrò un ufficio?
-- Posso usarlo come tesi ?
+Modelli compatibili:
+OneClassSVM, RVC, SEFR, DecisionTreeClassifier, DecisionTreeRegressor, RandomForestClassifier, RandomForestRegressor, GaussianNB,
+LogisticRegression, PCA, PrincipalFFT, LinearRegression, XGBClassifier
 
 
 Prof:
