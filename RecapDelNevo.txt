@@ -1,0 +1,17 @@
+Modelli compatibili:
+ - DecisionTree
+ - RandomForest
+ - XGBoost
+ - GaussianNB
+ - Support Vector Machines (SVC and OneClassSVM)
+ - Relevant Vector Machines (from `skbayes.rvm_ard_models` package)
+ - SEFR
+ - PCA -> non ha metodo Predict
+
+Prof:
+- Harduino con ML riconoscimento vibrazioni TinyML
+
+- Trad automatiche del testo e riconoscimento del testo
+scritto 
+
+- Riconoscimento stili nelle opere
