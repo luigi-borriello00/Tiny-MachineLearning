@@ -4,4 +4,4 @@ Modelli compatibili:
 - DecisionalTree Classifier	->	Prestazioni simili al random forest & esportato
 - XGB Classifier	->	Non salva su file e prestazioni leggermente migliori
 - Gauss NB Classifier	->	Prestazioni pessime ( circa 50%)
-- SVC	->	Prestazioni decenti ma sotto RF & esportato
+- SVC	->	Prestazioni ottime con GAMMA = 0.5 & esportato
