@@ -1,6 +1,6 @@
 #include <Arduino_APDS9960.h>
 #include <EloquentTinyML.h>      // https://github.com/eloquentarduino/EloquentTinyML
-#include "svc_model_paper.h"            // RF model file
+#include "xgb_model_paper.h"            // RF model file
 
 //#define NUMBER_OF_LABELS   7     // number of voice labels
 #define NUMBER_OF_LABELS   3     // number of voice labels
