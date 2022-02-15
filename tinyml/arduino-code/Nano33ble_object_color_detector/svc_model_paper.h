@@ -1,935 +1,177 @@
-#pragma once
-#include <cstdarg>
-namespace Eloquent {
-    namespace ML {
-        namespace Port {
-            class SVM {
-                public:
-                    /**
-                    * Predict class for features vector
-                    */
-                    int predict(float *x) {
-                        float kernels[287] = { 0 };
-                        float decisions[6] = { 0 };
-                        int votes[4] = { 0 };
-                        kernels[0] = compute_kernel(x,   100.0  , 112.0  , 110.0  , 1002.0  , 0.0 );
-                        kernels[1] = compute_kernel(x,   21.0  , 102.0  , 101.0  , 222.0  , 0.0 );
-                        kernels[2] = compute_kernel(x,   100.0  , 112.0  , 110.0  , 1010.0  , 0.0 );
-                        kernels[3] = compute_kernel(x,   21.0  , 102.0  , 100.0  , 221.0  , 0.0 );
-                        kernels[4] = compute_kernel(x,   21.0  , 110.0  , 101.0  , 221.0  , 0.0 );
-                        kernels[5] = compute_kernel(x,   102.0  , 120.0  , 112.0  , 1102.0  , 0.0 );
-                        kernels[6] = compute_kernel(x,   22.0  , 111.0  , 102.0  , 1010.0  , 0.0 );
-                        kernels[7] = compute_kernel(x,   100.0  , 111.0  , 102.0  , 1011.0  , 0.0 );
-                        kernels[8] = compute_kernel(x,   100.0  , 112.0  , 110.0  , 1010.0  , 0.0 );
-                        kernels[9] = compute_kernel(x,   21.0  , 102.0  , 100.0  , 221.0  , 0.0 );
-                        kernels[10] = compute_kernel(x,   22.0  , 111.0  , 102.0  , 1002.0  , 0.0 );
-                        kernels[11] = compute_kernel(x,   21.0  , 102.0  , 100.0  , 221.0  , 0.0 );
-                        kernels[12] = compute_kernel(x,   110.0  , 122.0  , 120.0  , 1120.0  , 111.0 );
-                        kernels[13] = compute_kernel(x,   100.0  , 112.0  , 111.0  , 1012.0  , 0.0 );
-                        kernels[14] = compute_kernel(x,   22.0  , 111.0  , 102.0  , 1010.0  , 0.0 );
-                        kernels[15] = compute_kernel(x,   22.0  , 111.0  , 102.0  , 1010.0  , 0.0 );
-                        kernels[16] = compute_kernel(x,   22.0  , 110.0  , 101.0  , 222.0  , 0.0 );
-                        kernels[17] = compute_kernel(x,   21.0  , 102.0  , 100.0  , 221.0  , 0.0 );
-                        kernels[18] = compute_kernel(x,   22.0  , 111.0  , 102.0  , 1010.0  , 0.0 );
-                        kernels[19] = compute_kernel(x,   22.0  , 111.0  , 102.0  , 1002.0  , 0.0 );
-                        kernels[20] = compute_kernel(x,   20.0  , 101.0  , 22.0  , 211.0  , 0.0 );
-                        kernels[21] = compute_kernel(x,   100.0  , 112.0  , 110.0  , 1012.0  , 0.0 );
-                        kernels[22] = compute_kernel(x,   22.0  , 110.0  , 101.0  , 1000.0  , 0.0 );
-                        kernels[23] = compute_kernel(x,   21.0  , 101.0  , 100.0  , 212.0  , 0.0 );
-                        kernels[24] = compute_kernel(x,   21.0  , 102.0  , 100.0  , 212.0  , 0.0 );
-                        kernels[25] = compute_kernel(x,   21.0  , 102.0  , 100.0  , 212.0  , 0.0 );
-                        kernels[26] = compute_kernel(x,   21.0  , 101.0  , 22.0  , 211.0  , 0.0 );
-                        kernels[27] = compute_kernel(x,   101.0  , 112.0  , 111.0  , 1022.0  , 0.0 );
-                        kernels[28] = compute_kernel(x,   22.0  , 111.0  , 110.0  , 1002.0  , 0.0 );
-                        kernels[29] = compute_kernel(x,   22.0  , 110.0  , 101.0  , 222.0  , 0.0 );
-                        kernels[30] = compute_kernel(x,   22.0  , 111.0  , 102.0  , 1010.0  , 0.0 );
-                        kernels[31] = compute_kernel(x,   22.0  , 111.0  , 102.0  , 1002.0  , 0.0 );
-                        kernels[32] = compute_kernel(x,   22.0  , 102.0  , 100.0  , 222.0  , 0.0 );
-                        kernels[33] = compute_kernel(x,   22.0  , 110.0  , 101.0  , 1000.0  , 0.0 );
-                        kernels[34] = compute_kernel(x,   100.0  , 112.0  , 110.0  , 1012.0  , 0.0 );
-                        kernels[35] = compute_kernel(x,   22.0  , 110.0  , 101.0  , 1001.0  , 0.0 );
-                        kernels[36] = compute_kernel(x,   100.0  , 111.0  , 110.0  , 1011.0  , 0.0 );
-                        kernels[37] = compute_kernel(x,   100.0  , 111.0  , 102.0  , 1011.0  , 0.0 );
-                        kernels[38] = compute_kernel(x,   22.0  , 111.0  , 102.0  , 1001.0  , 0.0 );
-                        kernels[39] = compute_kernel(x,   22.0  , 110.0  , 101.0  , 222.0  , 0.0 );
-                        kernels[40] = compute_kernel(x,   100.0  , 111.0  , 110.0  , 1012.0  , 0.0 );
-                        kernels[41] = compute_kernel(x,   22.0  , 110.0  , 101.0  , 222.0  , 0.0 );
-                        kernels[42] = compute_kernel(x,   21.0  , 102.0  , 100.0  , 221.0  , 0.0 );
-                        kernels[43] = compute_kernel(x,   22.0  , 111.0  , 102.0  , 1002.0  , 0.0 );
-                        kernels[44] = compute_kernel(x,   22.0  , 110.0  , 101.0  , 222.0  , 0.0 );
-                        kernels[45] = compute_kernel(x,   21.0  , 102.0  , 100.0  , 221.0  , 0.0 );
-                        kernels[46] = compute_kernel(x,   100.0  , 112.0  , 110.0  , 1010.0  , 0.0 );
-                        kernels[47] = compute_kernel(x,   111.0  , 200.0  , 121.0  , 1200.0  , 1201.0 );
-                        kernels[48] = compute_kernel(x,   22.0  , 111.0  , 102.0  , 1001.0  , 0.0 );
-                        kernels[49] = compute_kernel(x,   100.0  , 112.0  , 110.0  , 1021.0  , 0.0 );
-                        kernels[50] = compute_kernel(x,   112.0  , 200.0  , 121.0  , 1201.0  , 2022.0 );
-                        kernels[51] = compute_kernel(x,   22.0  , 111.0  , 102.0  , 1010.0  , 0.0 );
-                        kernels[52] = compute_kernel(x,   111.0  , 200.0  , 121.0  , 1200.0  , 1222.0 );
-                        kernels[53] = compute_kernel(x,   22.0  , 110.0  , 101.0  , 1001.0  , 0.0 );
-                        kernels[54] = compute_kernel(x,   111.0  , 200.0  , 121.0  , 1201.0  , 2002.0 );
-                        kernels[55] = compute_kernel(x,   100.0  , 112.0  , 110.0  , 1011.0  , 0.0 );
-                        kernels[56] = compute_kernel(x,   22.0  , 111.0  , 102.0  , 1002.0  , 0.0 );
-                        kernels[57] = compute_kernel(x,   100.0  , 111.0  , 110.0  , 1010.0  , 0.0 );
-                        kernels[58] = compute_kernel(x,   22.0  , 110.0  , 101.0  , 222.0  , 0.0 );
-                        kernels[59] = compute_kernel(x,   101.0  , 120.0  , 111.0  , 1021.0  , 0.0 );
-                        kernels[60] = compute_kernel(x,   102.0  , 121.0  , 112.0  , 1110.0  , 0.0 );
-                        kernels[61] = compute_kernel(x,   22.0  , 111.0  , 102.0  , 1002.0  , 0.0 );
-                        kernels[62] = compute_kernel(x,   22.0  , 110.0  , 101.0  , 222.0  , 0.0 );
-                        kernels[63] = compute_kernel(x,   21.0  , 101.0  , 100.0  , 211.0  , 0.0 );
-                        kernels[64] = compute_kernel(x,   22.0  , 110.0  , 101.0  , 222.0  , 0.0 );
-                        kernels[65] = compute_kernel(x,   21.0  , 102.0  , 100.0  , 220.0  , 0.0 );
-                        kernels[66] = compute_kernel(x,   110.0  , 122.0  , 120.0  , 1121.0  , 1011.0 );
-                        kernels[67] = compute_kernel(x,   22.0  , 111.0  , 102.0  , 1002.0  , 0.0 );
-                        kernels[68] = compute_kernel(x,   22.0  , 111.0  , 102.0  , 1002.0  , 0.0 );
-                        kernels[69] = compute_kernel(x,   22.0  , 111.0  , 102.0  , 1010.0  , 0.0 );
-                        kernels[70] = compute_kernel(x,   22.0  , 111.0  , 102.0  , 1001.0  , 0.0 );
-                        kernels[71] = compute_kernel(x,   110.0  , 122.0  , 120.0  , 1121.0  , 210.0 );
-                        kernels[72] = compute_kernel(x,   21.0  , 102.0  , 100.0  , 221.0  , 0.0 );
-                        kernels[73] = compute_kernel(x,   100.0  , 112.0  , 110.0  , 1011.0  , 0.0 );
-                        kernels[74] = compute_kernel(x,   100.0  , 112.0  , 110.0  , 1012.0  , 0.0 );
-                        kernels[75] = compute_kernel(x,   22.0  , 110.0  , 101.0  , 1000.0  , 0.0 );
-                        kernels[76] = compute_kernel(x,   111.0  , 122.0  , 121.0  , 1122.0  , 1102.0 );
-                        kernels[77] = compute_kernel(x,   100.0  , 111.0  , 110.0  , 1012.0  , 0.0 );
-                        kernels[78] = compute_kernel(x,   100.0  , 111.0  , 102.0  , 1010.0  , 0.0 );
-                        kernels[79] = compute_kernel(x,   21.0  , 102.0  , 100.0  , 212.0  , 0.0 );
-                        kernels[80] = compute_kernel(x,   21.0  , 101.0  , 22.0  , 211.0  , 0.0 );
-                        kernels[81] = compute_kernel(x,   100.0  , 112.0  , 110.0  , 1020.0  , 0.0 );
-                        kernels[82] = compute_kernel(x,   101.0  , 112.0  , 111.0  , 1022.0  , 0.0 );
-                        kernels[83] = compute_kernel(x,   22.0  , 111.0  , 102.0  , 1010.0  , 0.0 );
-                        kernels[84] = compute_kernel(x,   21.0  , 102.0  , 101.0  , 222.0  , 0.0 );
-                        kernels[85] = compute_kernel(x,   100.0  , 111.0  , 102.0  , 1011.0  , 0.0 );
-                        kernels[86] = compute_kernel(x,   110.0  , 122.0  , 120.0  , 1120.0  , 10.0 );
-                        kernels[87] = compute_kernel(x,   22.0  , 110.0  , 102.0  , 1001.0  , 0.0 );
-                        kernels[88] = compute_kernel(x,   22.0  , 111.0  , 102.0  , 1002.0  , 0.0 );
-                        kernels[89] = compute_kernel(x,   101.0  , 120.0  , 111.0  , 1100.0  , 0.0 );
-                        kernels[90] = compute_kernel(x,   100.0  , 112.0  , 110.0  , 1011.0  , 0.0 );
-                        kernels[91] = compute_kernel(x,   22.0  , 110.0  , 101.0  , 1000.0  , 0.0 );
-                        kernels[92] = compute_kernel(x,   100.0  , 112.0  , 111.0  , 1021.0  , 0.0 );
-                        kernels[93] = compute_kernel(x,   21.0  , 110.0  , 101.0  , 221.0  , 0.0 );
-                        kernels[94] = compute_kernel(x,   22.0  , 110.0  , 101.0  , 222.0  , 0.0 );
-                        kernels[95] = compute_kernel(x,   22.0  , 111.0  , 102.0  , 1002.0  , 0.0 );
-                        kernels[96] = compute_kernel(x,   21.0  , 102.0  , 100.0  , 221.0  , 0.0 );
-                        kernels[97] = compute_kernel(x,   100.0  , 112.0  , 110.0  , 1010.0  , 0.0 );
-                        kernels[98] = compute_kernel(x,   21.0  , 102.0  , 101.0  , 222.0  , 0.0 );
-                        kernels[99] = compute_kernel(x,   111.0  , 200.0  , 121.0  , 1200.0  , 1100.0 );
-                        kernels[100] = compute_kernel(x,   21.0  , 102.0  , 100.0  , 221.0  , 0.0 );
-                        kernels[101] = compute_kernel(x,   22.0  , 112.0  , 110.0  , 1002.0  , 0.0 );
-                        kernels[102] = compute_kernel(x,   22.0  , 102.0  , 101.0  , 222.0  , 0.0 );
-                        kernels[103] = compute_kernel(x,   22.0  , 111.0  , 102.0  , 1010.0  , 0.0 );
-                        kernels[104] = compute_kernel(x,   21.0  , 101.0  , 100.0  , 211.0  , 0.0 );
-                        kernels[105] = compute_kernel(x,   21.0  , 102.0  , 100.0  , 221.0  , 0.0 );
-                        kernels[106] = compute_kernel(x,   21.0  , 102.0  , 101.0  , 222.0  , 0.0 );
-                        kernels[107] = compute_kernel(x,   21.0  , 102.0  , 100.0  , 212.0  , 0.0 );
-                        kernels[108] = compute_kernel(x,   21.0  , 101.0  , 100.0  , 220.0  , 0.0 );
-                        kernels[109] = compute_kernel(x,   21.0  , 102.0  , 100.0  , 220.0  , 0.0 );
-                        kernels[110] = compute_kernel(x,   21.0  , 102.0  , 100.0  , 220.0  , 0.0 );
-                        kernels[111] = compute_kernel(x,   21.0  , 102.0  , 100.0  , 220.0  , 0.0 );
-                        kernels[112] = compute_kernel(x,   22.0  , 102.0  , 100.0  , 1000.0  , 0.0 );
-                        kernels[113] = compute_kernel(x,   12.0  , 100.0  , 21.0  , 200.0  , 0.0 );
-                        kernels[114] = compute_kernel(x,   21.0  , 101.0  , 100.0  , 212.0  , 0.0 );
-                        kernels[115] = compute_kernel(x,   21.0  , 102.0  , 100.0  , 220.0  , 0.0 );
-                        kernels[116] = compute_kernel(x,   21.0  , 102.0  , 100.0  , 220.0  , 0.0 );
-                        kernels[117] = compute_kernel(x,   22.0  , 110.0  , 101.0  , 1000.0  , 0.0 );
-                        kernels[118] = compute_kernel(x,   21.0  , 102.0  , 100.0  , 220.0  , 0.0 );
-                        kernels[119] = compute_kernel(x,   21.0  , 102.0  , 100.0  , 212.0  , 0.0 );
-                        kernels[120] = compute_kernel(x,   22.0  , 102.0  , 100.0  , 1000.0  , 0.0 );
-                        kernels[121] = compute_kernel(x,   22.0  , 102.0  , 100.0  , 1000.0  , 0.0 );
-                        kernels[122] = compute_kernel(x,   21.0  , 102.0  , 100.0  , 212.0  , 0.0 );
-                        kernels[123] = compute_kernel(x,   21.0  , 102.0  , 100.0  , 220.0  , 0.0 );
-                        kernels[124] = compute_kernel(x,   21.0  , 102.0  , 100.0  , 220.0  , 0.0 );
-                        kernels[125] = compute_kernel(x,   21.0  , 102.0  , 100.0  , 222.0  , 0.0 );
-                        kernels[126] = compute_kernel(x,   11.0  , 21.0  , 12.0  , 112.0  , 0.0 );
-                        kernels[127] = compute_kernel(x,   21.0  , 102.0  , 100.0  , 212.0  , 0.0 );
-                        kernels[128] = compute_kernel(x,   22.0  , 102.0  , 101.0  , 1000.0  , 0.0 );
-                        kernels[129] = compute_kernel(x,   21.0  , 101.0  , 22.0  , 212.0  , 0.0 );
-                        kernels[130] = compute_kernel(x,   12.0  , 22.0  , 21.0  , 200.0  , 0.0 );
-                        kernels[131] = compute_kernel(x,   12.0  , 22.0  , 21.0  , 200.0  , 0.0 );
-                        kernels[132] = compute_kernel(x,   22.0  , 102.0  , 101.0  , 1000.0  , 0.0 );
-                        kernels[133] = compute_kernel(x,   22.0  , 102.0  , 100.0  , 1000.0  , 0.0 );
-                        kernels[134] = compute_kernel(x,   21.0  , 102.0  , 100.0  , 222.0  , 0.0 );
-                        kernels[135] = compute_kernel(x,   21.0  , 101.0  , 100.0  , 212.0  , 0.0 );
-                        kernels[136] = compute_kernel(x,   21.0  , 102.0  , 100.0  , 212.0  , 0.0 );
-                        kernels[137] = compute_kernel(x,   21.0  , 101.0  , 100.0  , 212.0  , 0.0 );
-                        kernels[138] = compute_kernel(x,   21.0  , 101.0  , 22.0  , 212.0  , 0.0 );
-                        kernels[139] = compute_kernel(x,   20.0  , 100.0  , 21.0  , 201.0  , 0.0 );
-                        kernels[140] = compute_kernel(x,   21.0  , 102.0  , 100.0  , 220.0  , 0.0 );
-                        kernels[141] = compute_kernel(x,   21.0  , 102.0  , 100.0  , 220.0  , 0.0 );
-                        kernels[142] = compute_kernel(x,   21.0  , 102.0  , 100.0  , 220.0  , 0.0 );
-                        kernels[143] = compute_kernel(x,   21.0  , 102.0  , 100.0  , 220.0  , 0.0 );
-                        kernels[144] = compute_kernel(x,   21.0  , 101.0  , 100.0  , 212.0  , 0.0 );
-                        kernels[145] = compute_kernel(x,   12.0  , 22.0  , 21.0  , 122.0  , 0.0 );
-                        kernels[146] = compute_kernel(x,   21.0  , 102.0  , 100.0  , 220.0  , 0.0 );
-                        kernels[147] = compute_kernel(x,   21.0  , 102.0  , 100.0  , 212.0  , 0.0 );
-                        kernels[148] = compute_kernel(x,   22.0  , 110.0  , 101.0  , 1000.0  , 0.0 );
-                        kernels[149] = compute_kernel(x,   21.0  , 101.0  , 22.0  , 212.0  , 0.0 );
-                        kernels[150] = compute_kernel(x,   21.0  , 101.0  , 22.0  , 221.0  , 0.0 );
-                        kernels[151] = compute_kernel(x,   22.0  , 102.0  , 100.0  , 1000.0  , 0.0 );
-                        kernels[152] = compute_kernel(x,   21.0  , 102.0  , 100.0  , 221.0  , 0.0 );
-                        kernels[153] = compute_kernel(x,   22.0  , 102.0  , 100.0  , 221.0  , 0.0 );
-                        kernels[154] = compute_kernel(x,   22.0  , 111.0  , 101.0  , 1001.0  , 0.0 );
-                        kernels[155] = compute_kernel(x,   101.0  , 112.0  , 110.0  , 1020.0  , 0.0 );
-                        kernels[156] = compute_kernel(x,   22.0  , 102.0  , 100.0  , 221.0  , 0.0 );
-                        kernels[157] = compute_kernel(x,   101.0  , 112.0  , 110.0  , 1012.0  , 0.0 );
-                        kernels[158] = compute_kernel(x,   100.0  , 111.0  , 101.0  , 1001.0  , 0.0 );
-                        kernels[159] = compute_kernel(x,   22.0  , 110.0  , 100.0  , 222.0  , 0.0 );
-                        kernels[160] = compute_kernel(x,   22.0  , 110.0  , 101.0  , 222.0  , 0.0 );
-                        kernels[161] = compute_kernel(x,   22.0  , 111.0  , 101.0  , 1001.0  , 0.0 );
-                        kernels[162] = compute_kernel(x,   100.0  , 111.0  , 101.0  , 1001.0  , 0.0 );
-                        kernels[163] = compute_kernel(x,   100.0  , 111.0  , 101.0  , 1001.0  , 0.0 );
-                        kernels[164] = compute_kernel(x,   22.0  , 110.0  , 101.0  , 222.0  , 0.0 );
-                        kernels[165] = compute_kernel(x,   101.0  , 112.0  , 110.0  , 1020.0  , 0.0 );
-                        kernels[166] = compute_kernel(x,   22.0  , 110.0  , 100.0  , 221.0  , 0.0 );
-                        kernels[167] = compute_kernel(x,   22.0  , 102.0  , 100.0  , 221.0  , 0.0 );
-                        kernels[168] = compute_kernel(x,   21.0  , 102.0  , 100.0  , 221.0  , 0.0 );
-                        kernels[169] = compute_kernel(x,   22.0  , 102.0  , 100.0  , 221.0  , 0.0 );
-                        kernels[170] = compute_kernel(x,   100.0  , 111.0  , 101.0  , 1001.0  , 0.0 );
-                        kernels[171] = compute_kernel(x,   22.0  , 110.0  , 101.0  , 1001.0  , 0.0 );
-                        kernels[172] = compute_kernel(x,   21.0  , 102.0  , 100.0  , 220.0  , 0.0 );
-                        kernels[173] = compute_kernel(x,   22.0  , 111.0  , 101.0  , 1001.0  , 0.0 );
-                        kernels[174] = compute_kernel(x,   22.0  , 110.0  , 101.0  , 1000.0  , 0.0 );
-                        kernels[175] = compute_kernel(x,   101.0  , 120.0  , 110.0  , 1012.0  , 0.0 );
-                        kernels[176] = compute_kernel(x,   22.0  , 111.0  , 101.0  , 1001.0  , 0.0 );
-                        kernels[177] = compute_kernel(x,   22.0  , 111.0  , 101.0  , 1001.0  , 0.0 );
-                        kernels[178] = compute_kernel(x,   22.0  , 110.0  , 101.0  , 1000.0  , 0.0 );
-                        kernels[179] = compute_kernel(x,   22.0  , 110.0  , 100.0  , 222.0  , 0.0 );
-                        kernels[180] = compute_kernel(x,   101.0  , 120.0  , 110.0  , 1020.0  , 0.0 );
-                        kernels[181] = compute_kernel(x,   22.0  , 110.0  , 101.0  , 222.0  , 0.0 );
-                        kernels[182] = compute_kernel(x,   22.0  , 110.0  , 101.0  , 1000.0  , 0.0 );
-                        kernels[183] = compute_kernel(x,   22.0  , 110.0  , 101.0  , 1000.0  , 0.0 );
-                        kernels[184] = compute_kernel(x,   100.0  , 111.0  , 101.0  , 1001.0  , 0.0 );
-                        kernels[185] = compute_kernel(x,   22.0  , 111.0  , 101.0  , 1001.0  , 0.0 );
-                        kernels[186] = compute_kernel(x,   100.0  , 112.0  , 102.0  , 1012.0  , 0.0 );
-                        kernels[187] = compute_kernel(x,   22.0  , 110.0  , 100.0  , 222.0  , 0.0 );
-                        kernels[188] = compute_kernel(x,   22.0  , 110.0  , 100.0  , 221.0  , 0.0 );
-                        kernels[189] = compute_kernel(x,   21.0  , 102.0  , 100.0  , 220.0  , 0.0 );
-                        kernels[190] = compute_kernel(x,   22.0  , 110.0  , 101.0  , 1000.0  , 0.0 );
-                        kernels[191] = compute_kernel(x,   22.0  , 110.0  , 101.0  , 1000.0  , 0.0 );
-                        kernels[192] = compute_kernel(x,   22.0  , 102.0  , 100.0  , 1000.0  , 0.0 );
-                        kernels[193] = compute_kernel(x,   100.0  , 111.0  , 101.0  , 1001.0  , 0.0 );
-                        kernels[194] = compute_kernel(x,   100.0  , 111.0  , 102.0  , 1010.0  , 0.0 );
-                        kernels[195] = compute_kernel(x,   22.0  , 110.0  , 101.0  , 1001.0  , 0.0 );
-                        kernels[196] = compute_kernel(x,   22.0  , 110.0  , 101.0  , 1000.0  , 0.0 );
-                        kernels[197] = compute_kernel(x,   22.0  , 110.0  , 101.0  , 1001.0  , 0.0 );
-                        kernels[198] = compute_kernel(x,   100.0  , 111.0  , 102.0  , 1010.0  , 0.0 );
-                        kernels[199] = compute_kernel(x,   22.0  , 110.0  , 101.0  , 1001.0  , 0.0 );
-                        kernels[200] = compute_kernel(x,   22.0  , 110.0  , 101.0  , 222.0  , 0.0 );
-                        kernels[201] = compute_kernel(x,   100.0  , 111.0  , 101.0  , 1001.0  , 0.0 );
-                        kernels[202] = compute_kernel(x,   100.0  , 111.0  , 102.0  , 1010.0  , 0.0 );
-                        kernels[203] = compute_kernel(x,   101.0  , 112.0  , 102.0  , 1012.0  , 0.0 );
-                        kernels[204] = compute_kernel(x,   100.0  , 112.0  , 102.0  , 1011.0  , 0.0 );
-                        kernels[205] = compute_kernel(x,   21.0  , 102.0  , 100.0  , 212.0  , 0.0 );
-                        kernels[206] = compute_kernel(x,   100.0  , 111.0  , 102.0  , 1010.0  , 0.0 );
-                        kernels[207] = compute_kernel(x,   101.0  , 112.0  , 110.0  , 1012.0  , 0.0 );
-                        kernels[208] = compute_kernel(x,   22.0  , 110.0  , 101.0  , 222.0  , 0.0 );
-                        kernels[209] = compute_kernel(x,   100.0  , 112.0  , 102.0  , 1011.0  , 0.0 );
-                        kernels[210] = compute_kernel(x,   22.0  , 111.0  , 101.0  , 1001.0  , 0.0 );
-                        kernels[211] = compute_kernel(x,   100.0  , 111.0  , 102.0  , 1010.0  , 0.0 );
-                        kernels[212] = compute_kernel(x,   100.0  , 112.0  , 102.0  , 1011.0  , 0.0 );
-                        kernels[213] = compute_kernel(x,   22.0  , 110.0  , 101.0  , 1000.0  , 0.0 );
-                        kernels[214] = compute_kernel(x,   22.0  , 110.0  , 101.0  , 1001.0  , 0.0 );
-                        kernels[215] = compute_kernel(x,   22.0  , 110.0  , 101.0  , 1000.0  , 0.0 );
-                        kernels[216] = compute_kernel(x,   101.0  , 112.0  , 102.0  , 1012.0  , 0.0 );
-                        kernels[217] = compute_kernel(x,   100.0  , 112.0  , 102.0  , 1010.0  , 0.0 );
-                        kernels[218] = compute_kernel(x,   100.0  , 112.0  , 102.0  , 1011.0  , 0.0 );
-                        kernels[219] = compute_kernel(x,   21.0  , 102.0  , 100.0  , 220.0  , 0.0 );
-                        kernels[220] = compute_kernel(x,   101.0  , 112.0  , 110.0  , 1012.0  , 0.0 );
-                        kernels[221] = compute_kernel(x,   101.0  , 112.0  , 110.0  , 1012.0  , 0.0 );
-                        kernels[222] = compute_kernel(x,   22.0  , 110.0  , 100.0  , 222.0  , 0.0 );
-                        kernels[223] = compute_kernel(x,   22.0  , 110.0  , 100.0  , 222.0  , 0.0 );
-                        kernels[224] = compute_kernel(x,   22.0  , 111.0  , 101.0  , 1001.0  , 0.0 );
-                        kernels[225] = compute_kernel(x,   22.0  , 111.0  , 101.0  , 1001.0  , 0.0 );
-                        kernels[226] = compute_kernel(x,   22.0  , 110.0  , 101.0  , 1000.0  , 0.0 );
-                        kernels[227] = compute_kernel(x,   100.0  , 112.0  , 102.0  , 1011.0  , 0.0 );
-                        kernels[228] = compute_kernel(x,   22.0  , 110.0  , 101.0  , 1001.0  , 0.0 );
-                        kernels[229] = compute_kernel(x,   100.0  , 112.0  , 102.0  , 1011.0  , 0.0 );
-                        kernels[230] = compute_kernel(x,   100.0  , 111.0  , 102.0  , 1010.0  , 0.0 );
-                        kernels[231] = compute_kernel(x,   22.0  , 110.0  , 101.0  , 1000.0  , 0.0 );
-                        kernels[232] = compute_kernel(x,   100.0  , 112.0  , 102.0  , 1010.0  , 0.0 );
-                        kernels[233] = compute_kernel(x,   100.0  , 112.0  , 102.0  , 1010.0  , 0.0 );
-                        kernels[234] = compute_kernel(x,   22.0  , 110.0  , 101.0  , 1000.0  , 0.0 );
-                        kernels[235] = compute_kernel(x,   100.0  , 112.0  , 102.0  , 1011.0  , 0.0 );
-                        kernels[236] = compute_kernel(x,   100.0  , 112.0  , 102.0  , 1011.0  , 0.0 );
-                        kernels[237] = compute_kernel(x,   101.0  , 112.0  , 110.0  , 1020.0  , 0.0 );
-                        kernels[238] = compute_kernel(x,   100.0  , 112.0  , 102.0  , 1011.0  , 0.0 );
-                        kernels[239] = compute_kernel(x,   22.0  , 110.0  , 101.0  , 1000.0  , 0.0 );
-                        kernels[240] = compute_kernel(x,   100.0  , 111.0  , 102.0  , 1002.0  , 0.0 );
-                        kernels[241] = compute_kernel(x,   22.0  , 110.0  , 101.0  , 1000.0  , 0.0 );
-                        kernels[242] = compute_kernel(x,   100.0  , 111.0  , 102.0  , 1002.0  , 0.0 );
-                        kernels[243] = compute_kernel(x,   22.0  , 110.0  , 101.0  , 1001.0  , 0.0 );
-                        kernels[244] = compute_kernel(x,   22.0  , 110.0  , 101.0  , 222.0  , 0.0 );
-                        kernels[245] = compute_kernel(x,   22.0  , 110.0  , 101.0  , 1000.0  , 0.0 );
-                        kernels[246] = compute_kernel(x,   100.0  , 111.0  , 102.0  , 1002.0  , 0.0 );
-                        kernels[247] = compute_kernel(x,   22.0  , 110.0  , 100.0  , 221.0  , 0.0 );
-                        kernels[248] = compute_kernel(x,   100.0  , 111.0  , 102.0  , 1002.0  , 0.0 );
-                        kernels[249] = compute_kernel(x,   21.0  , 102.0  , 100.0  , 220.0  , 0.0 );
-                        kernels[250] = compute_kernel(x,   101.0  , 120.0  , 110.0  , 1020.0  , 0.0 );
-                        kernels[251] = compute_kernel(x,   101.0  , 120.0  , 110.0  , 1012.0  , 0.0 );
-                        kernels[252] = compute_kernel(x,   100.0  , 111.0  , 101.0  , 1001.0  , 0.0 );
-                        kernels[253] = compute_kernel(x,   22.0  , 110.0  , 101.0  , 222.0  , 0.0 );
-                        kernels[254] = compute_kernel(x,   100.0  , 111.0  , 102.0  , 1010.0  , 0.0 );
-                        kernels[255] = compute_kernel(x,   100.0  , 111.0  , 102.0  , 1002.0  , 0.0 );
-                        kernels[256] = compute_kernel(x,   100.0  , 112.0  , 102.0  , 1011.0  , 0.0 );
-                        kernels[257] = compute_kernel(x,   22.0  , 102.0  , 100.0  , 221.0  , 0.0 );
-                        kernels[258] = compute_kernel(x,   100.0  , 111.0  , 102.0  , 1002.0  , 0.0 );
-                        kernels[259] = compute_kernel(x,   100.0  , 112.0  , 102.0  , 1011.0  , 0.0 );
-                        kernels[260] = compute_kernel(x,   22.0  , 102.0  , 100.0  , 221.0  , 0.0 );
-                        kernels[261] = compute_kernel(x,   22.0  , 110.0  , 101.0  , 222.0  , 0.0 );
-                        kernels[262] = compute_kernel(x,   100.0  , 111.0  , 102.0  , 1010.0  , 0.0 );
-                        kernels[263] = compute_kernel(x,   21.0  , 102.0  , 100.0  , 221.0  , 0.0 );
-                        kernels[264] = compute_kernel(x,   102.0  , 120.0  , 111.0  , 1022.0  , 0.0 );
-                        kernels[265] = compute_kernel(x,   22.0  , 110.0  , 101.0  , 222.0  , 0.0 );
-                        kernels[266] = compute_kernel(x,   100.0  , 112.0  , 102.0  , 1010.0  , 0.0 );
-                        kernels[267] = compute_kernel(x,   22.0  , 110.0  , 101.0  , 1000.0  , 0.0 );
-                        kernels[268] = compute_kernel(x,   21.0  , 102.0  , 100.0  , 220.0  , 0.0 );
-                        kernels[269] = compute_kernel(x,   22.0  , 110.0  , 101.0  , 1001.0  , 0.0 );
-                        kernels[270] = compute_kernel(x,   22.0  , 110.0  , 101.0  , 1001.0  , 0.0 );
-                        kernels[271] = compute_kernel(x,   22.0  , 110.0  , 101.0  , 1000.0  , 0.0 );
-                        kernels[272] = compute_kernel(x,   100.0  , 111.0  , 102.0  , 1010.0  , 0.0 );
-                        kernels[273] = compute_kernel(x,   22.0  , 102.0  , 100.0  , 221.0  , 0.0 );
-                        kernels[274] = compute_kernel(x,   21.0  , 102.0  , 100.0  , 220.0  , 0.0 );
-                        kernels[275] = compute_kernel(x,   22.0  , 110.0  , 101.0  , 1000.0  , 0.0 );
-                        kernels[276] = compute_kernel(x,   100.0  , 111.0  , 102.0  , 1010.0  , 0.0 );
-                        kernels[277] = compute_kernel(x,   22.0  , 102.0  , 100.0  , 221.0  , 0.0 );
-                        kernels[278] = compute_kernel(x,   22.0  , 110.0  , 101.0  , 1001.0  , 0.0 );
-                        kernels[279] = compute_kernel(x,   110.0  , 122.0  , 112.0  , 1110.0  , 0.0 );
-                        kernels[280] = compute_kernel(x,   101.0  , 112.0  , 110.0  , 1012.0  , 0.0 );
-                        kernels[281] = compute_kernel(x,   22.0  , 110.0  , 101.0  , 1001.0  , 0.0 );
-                        kernels[282] = compute_kernel(x,   21.0  , 102.0  , 100.0  , 220.0  , 0.0 );
-                        kernels[283] = compute_kernel(x,   100.0  , 111.0  , 101.0  , 1001.0  , 0.0 );
-                        kernels[284] = compute_kernel(x,   100.0  , 111.0  , 102.0  , 1002.0  , 0.0 );
-                        kernels[285] = compute_kernel(x,   100.0  , 112.0  , 102.0  , 1011.0  , 0.0 );
-                        kernels[286] = compute_kernel(x,   100.0  , 111.0  , 102.0  , 1010.0  , 0.0 );
-                        decisions[0] = 0.472148867517
-                        + kernels[0] * 0.305165441246
-                        + kernels[1]
-                        + kernels[3]
-                        + kernels[4]
-                        + kernels[9]
-                        + kernels[11]
-                        + kernels[12] * 0.527864965055
-                        + kernels[17]
-                        + kernels[20]
-                        + kernels[22]
-                        + kernels[23]
-                        + kernels[24]
-                        + kernels[25]
-                        + kernels[26]
-                        + kernels[32]
-                        + kernels[33]
-                        + kernels[35]
-                        + kernels[41] * 0.439255251301
-                        + kernels[42]
-                        + kernels[44]
-                        + kernels[45]
-                        + kernels[47] * 0.321073366046
-                        + kernels[48] * 0.992497018978
-                        + kernels[50] * 0.316185386452
-                        + kernels[52] * 0.321127843975
-                        + kernels[53]
-                        + kernels[54] * 0.316089476007
-                        + kernels[58]
-                        + kernels[59] * 0.201838781873
-                        + kernels[62]
-                        + kernels[63]
-                        + kernels[64]
-                        + kernels[65]
-                        + kernels[66] * 0.527699276957
-                        + kernels[70] * 0.97395510229
-                        + kernels[71] * 0.52787881182
-                        + kernels[72]
-                        + kernels[75]
-                        + kernels[76] * 0.528224340892
-                        + kernels[78] * 0.002138518336
-                        + kernels[79]
-                        + kernels[80]
-                        + kernels[82] * 0.131018900692
-                        + kernels[84]
-                        + kernels[86] * 0.349139128013
-                        + kernels[87]
-                        + kernels[89] * 0.348232444082
-                        + kernels[91]
-                        + kernels[93]
-                        + kernels[94] * 0.975173266195
-                        + kernels[96]
-                        + kernels[98]
-                        + kernels[99] * 0.528058396034
-                        + kernels[100]
-                        + kernels[102]
-                        + kernels[104]
-                        - kernels[105]
-                        - kernels[106]
-                        - kernels[107]
-                        - kernels[108]
-                        - kernels[109]
-                        - kernels[110]
-                        - kernels[111]
-                        - kernels[112]
-                        + kernels[113] * -0.94991616989
-                        + kernels[114] * -0.77112962442
-                        - kernels[115]
-                        - kernels[116]
-                        - kernels[117]
-                        - kernels[118]
-                        - kernels[119]
-                        - kernels[120]
-                        - kernels[121]
-                        - kernels[122]
-                        - kernels[123]
-                        - kernels[124]
-                        - kernels[125]
-                        + kernels[126] * -0.810561464851
-                        - kernels[127]
-                        - kernels[128]
-                        + kernels[129] * -0.221376777145
-                        + kernels[130] * -0.466668528589
-                        - kernels[131]
-                        - kernels[132]
-                        - kernels[133]
-                        - kernels[134]
-                        - kernels[135]
-                        - kernels[136]
-                        - kernels[137]
-                        - kernels[138]
-                        + kernels[139] * -0.713168566264
-                        - kernels[140]
-                        - kernels[141]
-                        - kernels[142]
-                        - kernels[143]
-                        + kernels[144] * -0.977015478544
-                        + kernels[145] * -0.794034751565
-                        - kernels[146]
-                        - kernels[147]
-                        - kernels[148]
-                        + kernels[149] * -0.928744354976
-                        - kernels[150]
-                        - kernels[151]
-                        - kernels[152]
-                        ;
-                        decisions[1] = 0.825536853658
-                        + kernels[0]
-                        + kernels[2]
-                        + kernels[4]
-                        + kernels[6] * 0.131230085355
-                        + kernels[7]
-                        + kernels[8]
-                        + kernels[9] * 0.641289286812
-                        + kernels[10]
-                        + kernels[11]
-                        + kernels[12] * 0.174848964064
-                        + kernels[13]
-                        + kernels[14]
-                        + kernels[15]
-                        + kernels[16]
-                        + kernels[17]
-                        + kernels[18]
-                        + kernels[19]
-                        + kernels[20] * 0.008183851609
-                        + kernels[21]
-                        + kernels[22]
-                        + kernels[25] * 0.47452765553
-                        + kernels[27] * 0.59991732052
-                        + kernels[28]
-                        + kernels[29]
-                        + kernels[30]
-                        + kernels[31]
-                        + kernels[32]
-                        + kernels[33]
-                        + kernels[34]
-                        + kernels[35]
-                        + kernels[36]
-                        + kernels[37]
-                        + kernels[38]
-                        + kernels[39]
-                        + kernels[40]
-                        + kernels[41]
-                        + kernels[42]
-                        + kernels[43]
-                        + kernels[44]
-                        + kernels[45]
-                        + kernels[46]
-                        + kernels[47] * 0.105869067896
-                        + kernels[48]
-                        + kernels[49]
-                        + kernels[50] * 0.10437651849
-                        + kernels[51]
-                        + kernels[52] * 0.106302418517
-                        + kernels[53]
-                        + kernels[54] * 0.104530844876
-                        + kernels[55]
-                        + kernels[56]
-                        + kernels[57]
-                        + kernels[58]
-                        + kernels[59]
-                        + kernels[61]
-                        + kernels[62]
-                        + kernels[64]
-                        + kernels[66] * 0.17437389351
-                        + kernels[67]
-                        + kernels[68]
-                        + kernels[69]
-                        + kernels[70]
-                        + kernels[71] * 0.174365930613
-                        + kernels[72]
-                        + kernels[73]
-                        + kernels[74]
-                        + kernels[75]
-                        + kernels[76] * 0.174113774745
-                        + kernels[77]
-                        + kernels[78]
-                        + kernels[79] * 0.965346917033
-                        + kernels[80] * 0.167758693784
-                        + kernels[81]
-                        + kernels[82] * 0.389250670786
-                        + kernels[83]
-                        + kernels[85]
-                        + kernels[86] * 0.117638903696
-                        + kernels[87]
-                        + kernels[88]
-                        + kernels[89] * 0.111508039252
-                        + kernels[90]
-                        + kernels[91]
-                        + kernels[92]
-                        + kernels[93]
-                        + kernels[94]
-                        + kernels[95]
-                        + kernels[96]
-                        + kernels[97]
-                        + kernels[99] * 0.174154180649
-                        + kernels[100]
-                        + kernels[101]
-                        + kernels[102]
-                        + kernels[103]
-                        - kernels[153]
-                        - kernels[154]
-                        - kernels[155]
-                        - kernels[156]
-                        - kernels[157]
-                        - kernels[159]
-                        - kernels[160]
-                        - kernels[161]
-                        - kernels[164]
-                        - kernels[165]
-                        - kernels[166]
-                        - kernels[167]
-                        - kernels[168]
-                        - kernels[169]
-                        - kernels[171]
-                        - kernels[172]
-                        - kernels[173]
-                        + kernels[174] * -0.950733297482
-                        - kernels[175]
-                        - kernels[176]
-                        - kernels[177]
-                        - kernels[178]
-                        - kernels[179]
-                        - kernels[180]
-                        - kernels[181]
-                        - kernels[182]
-                        - kernels[183]
-                        - kernels[185]
-                        - kernels[186]
-                        - kernels[187]
-                        - kernels[188]
-                        - kernels[189]
-                        - kernels[190]
-                        - kernels[191]
-                        + kernels[194] * -0.095362867723
-                        - kernels[195]
-                        - kernels[196]
-                        - kernels[197]
-                        - kernels[198]
-                        - kernels[199]
-                        - kernels[200]
-                        - kernels[202]
-                        - kernels[203]
-                        + kernels[204] * -0.153178111377
-                        - kernels[205]
-                        - kernels[206]
-                        - kernels[207]
-                        - kernels[208]
-                        - kernels[209]
-                        - kernels[210]
-                        - kernels[211]
-                        - kernels[212]
-                        - kernels[213]
-                        - kernels[214]
-                        - kernels[215]
-                        - kernels[216]
-                        - kernels[218]
-                        - kernels[219]
-                        - kernels[220]
-                        - kernels[221]
-                        - kernels[222]
-                        - kernels[223]
-                        - kernels[224]
-                        - kernels[225]
-                        - kernels[226]
-                        - kernels[227]
-                        - kernels[228]
-                        - kernels[229]
-                        - kernels[230]
-                        - kernels[231]
-                        - kernels[234]
-                        - kernels[235]
-                        - kernels[236]
-                        - kernels[237]
-                        + kernels[238] * -0.491900528849
-                        - kernels[239]
-                        + kernels[240] * -0.14830664645
-                        - kernels[241]
-                        - kernels[242]
-                        - kernels[243]
-                        - kernels[244]
-                        - kernels[245]
-                        + kernels[246] * -0.060105565858
-                        ;
-                        decisions[2] = 0.885357712646
-                        + kernels[0]
-                        + kernels[2]
-                        + kernels[5] * 0.324713963986
-                        + kernels[7]
-                        + kernels[8]
-                        + kernels[12] * 0.114552056954
-                        + kernels[17] * 0.408486331699
-                        + kernels[20] * 0.009201804532
-                        + kernels[21]
-                        + kernels[22]
-                        + kernels[23] * 0.088582144032
-                        + kernels[32]
-                        + kernels[33]
-                        + kernels[34]
-                        + kernels[35]
-                        + kernels[36]
-                        + kernels[37]
-                        + kernels[42]
-                        + kernels[44]
-                        + kernels[45]
-                        + kernels[46]
-                        + kernels[47] * 0.070353461667
-                        + kernels[50] * 0.068084758378
-                        + kernels[52] * 0.069382529273
-                        + kernels[53]
-                        + kernels[54] * 0.069364740828
-                        + kernels[55]
-                        + kernels[57]
-                        + kernels[58]
-                        + kernels[60] * 0.511975849292
-                        + kernels[62]
-                        + kernels[64]
-                        + kernels[65]
-                        + kernels[66] * 0.114618621477
-                        + kernels[71] * 0.114588888361
-                        + kernels[72]
-                        + kernels[73]
-                        + kernels[74]
-                        + kernels[75]
-                        + kernels[76] * 0.11424350932
-                        + kernels[77] * 0.554772659869
-                        + kernels[78]
-                        + kernels[80] * 0.105661890424
-                        + kernels[85]
-                        + kernels[86] * 0.327934519691
-                        + kernels[87] * 0.973080906641
-                        + kernels[90]
-                        + kernels[91]
-                        + kernels[94] * 0.132974723751
-                        + kernels[96]
-                        + kernels[97]
-                        + kernels[99] * 0.114531635222
-                        + kernels[100]
-                        + kernels[102] * 0.970781423343
-                        + kernels[103] * 0.157072499461
-                        + kernels[104] * 0.585041081799
-                        - kernels[247]
-                        - kernels[248]
-                        - kernels[249]
-                        - kernels[250]
-                        - kernels[251]
-                        - kernels[252]
-                        - kernels[253]
-                        - kernels[254]
-                        - kernels[255]
-                        - kernels[256]
-                        - kernels[257]
-                        - kernels[258]
-                        - kernels[259]
-                        - kernels[260]
-                        - kernels[261]
-                        - kernels[262]
-                        - kernels[263]
-                        - kernels[264]
-                        - kernels[265]
-                        - kernels[266]
-                        - kernels[267]
-                        - kernels[268]
-                        - kernels[269]
-                        - kernels[270]
-                        - kernels[271]
-                        - kernels[272]
-                        - kernels[273]
-                        - kernels[274]
-                        - kernels[275]
-                        - kernels[276]
-                        - kernels[277]
-                        - kernels[278]
-                        - kernels[279]
-                        - kernels[280]
-                        - kernels[281]
-                        - kernels[282]
-                        - kernels[283]
-                        - kernels[284]
-                        - kernels[285]
-                        - kernels[286]
-                        ;
-                        decisions[3] = 0.205359404588
-                        + kernels[105]
-                        + kernels[106]
-                        + kernels[108]
-                        + kernels[109]
-                        + kernels[110]
-                        + kernels[111]
-                        + kernels[112]
-                        + kernels[113] * 0.494607243051
-                        + kernels[115]
-                        + kernels[116]
-                        + kernels[117]
-                        + kernels[118]
-                        + kernels[120]
-                        + kernels[121]
-                        + kernels[123]
-                        + kernels[124]
-                        + kernels[125]
-                        + kernels[126] * 0.438294948125
-                        + kernels[128]
-                        + kernels[131] * 0.792070333254
-                        + kernels[132]
-                        + kernels[133]
-                        + kernels[134]
-                        + kernels[136] * 0.946490170367
-                        + kernels[140]
-                        + kernels[141]
-                        + kernels[142]
-                        + kernels[143]
-                        + kernels[145] * 0.427563059776
-                        + kernels[146]
-                        + kernels[147]
-                        + kernels[148]
-                        + kernels[150] * 0.498023982647
-                        + kernels[151]
-                        + kernels[152]
-                        - kernels[153]
-                        - kernels[156]
-                        - kernels[159]
-                        + kernels[160] * -0.27319356279
-                        - kernels[164]
-                        - kernels[166]
-                        - kernels[167]
-                        - kernels[168]
-                        - kernels[169]
-                        - kernels[172]
-                        - kernels[179]
-                        + kernels[180] * -0.675745305977
-                        - kernels[181]
-                        - kernels[187]
-                        - kernels[188]
-                        - kernels[189]
-                        - kernels[192]
-                        + kernels[196] * -0.2463966444
-                        - kernels[200]
-                        + kernels[201] * -0.741821747236
-                        - kernels[205]
-                        - kernels[208]
-                        - kernels[213]
-                        - kernels[215]
-                        - kernels[219]
-                        - kernels[222]
-                        - kernels[223]
-                        - kernels[226]
-                        - kernels[231]
-                        - kernels[234]
-                        + kernels[237] * -0.093956930559
-                        - kernels[239]
-                        - kernels[241]
-                        + kernels[243] * -0.581316099045
-                        + kernels[244] * -0.984619447212
-                        - kernels[245]
-                        ;
-                        decisions[4] = 0.370253541529
-                        + kernels[105]
-                        + kernels[106]
-                        + kernels[113] * 0.393282918839
-                        + kernels[116] * 0.370554338056
-                        + kernels[117]
-                        + kernels[118]
-                        + kernels[120] * 0.343308121926
-                        + kernels[121]
-                        + kernels[123]
-                        + kernels[124]
-                        + kernels[125]
-                        + kernels[126] * 0.347975523907
-                        + kernels[128]
-                        + kernels[131] * 0.627810063413
-                        + kernels[132]
-                        + kernels[133]
-                        + kernels[134]
-                        + kernels[140]
-                        + kernels[141]
-                        + kernels[142]
-                        + kernels[143]
-                        + kernels[145] * 0.338124993818
-                        + kernels[146] * 0.997175374638
-                        + kernels[148]
-                        + kernels[150] * 0.394159699877
-                        + kernels[151] * 0.972813733611
-                        + kernels[152]
-                        - kernels[247]
-                        - kernels[249]
-                        - kernels[253]
-                        - kernels[257]
-                        - kernels[260]
-                        - kernels[261]
-                        - kernels[263]
-                        + kernels[264] * -0.891532247409
-                        - kernels[265]
-                        - kernels[267]
-                        - kernels[268]
-                        - kernels[269]
-                        - kernels[270]
-                        - kernels[271]
-                        - kernels[273]
-                        - kernels[274]
-                        - kernels[275]
-                        - kernels[277]
-                        - kernels[278]
-                        - kernels[279]
-                        - kernels[281]
-                        - kernels[282]
-                        + kernels[283] * -0.893672520676
-                        ;
-                        decisions[5] = 0.726546046727
-                        + kernels[153]
-                        + kernels[156]
-                        + kernels[158] * 0.550363222648
-                        + kernels[162]
-                        + kernels[163]
-                        + kernels[165] * 0.460602402687
-                        + kernels[167]
-                        + kernels[168]
-                        + kernels[169]
-                        + kernels[170]
-                        + kernels[172]
-                        + kernels[175]
-                        + kernels[177] * 0.841617680119
-                        + kernels[180]
-                        + kernels[181] * 0.136802152608
-                        + kernels[184]
-                        + kernels[185]
-                        + kernels[186]
-                        + kernels[189]
-                        + kernels[192] * 0.730713977299
-                        + kernels[193]
-                        + kernels[200]
-                        + kernels[201]
-                        + kernels[205] * 0.730228959221
-                        + kernels[208]
-                        + kernels[210]
-                        + kernels[216] * 0.531752564247
-                        + kernels[217]
-                        + kernels[219]
-                        + kernels[220]
-                        + kernels[221] * 0.327785622845
-                        + kernels[222] * 0.518427270784
-                        + kernels[223] * 0.931481752597
-                        + kernels[224]
-                        + kernels[225]
-                        + kernels[227] * 0.519797468313
-                        + kernels[229]
-                        + kernels[232]
-                        + kernels[233] * 0.090154278221
-                        + kernels[235]
-                        + kernels[236]
-                        + kernels[237] * 0.878005469698
-                        + kernels[238]
-                        + kernels[239]
-                        + kernels[241] * 0.752267178713
-                        + kernels[244]
-                        - kernels[247]
-                        - kernels[248]
-                        - kernels[249]
-                        - kernels[250]
-                        - kernels[251]
-                        - kernels[252]
-                        - kernels[253]
-                        - kernels[254]
-                        - kernels[255]
-                        - kernels[256]
-                        - kernels[257]
-                        - kernels[258]
-                        - kernels[259]
-                        - kernels[260]
-                        - kernels[261]
-                        - kernels[262]
-                        - kernels[263]
-                        - kernels[264]
-                        - kernels[265]
-                        - kernels[266]
-                        - kernels[267]
-                        - kernels[268]
-                        - kernels[269]
-                        - kernels[270]
-                        - kernels[271]
-                        - kernels[272]
-                        - kernels[273]
-                        - kernels[274]
-                        - kernels[275]
-                        - kernels[276]
-                        - kernels[277]
-                        - kernels[278]
-                        - kernels[279]
-                        - kernels[280]
-                        - kernels[281]
-                        - kernels[282]
-                        - kernels[283]
-                        - kernels[284]
-                        - kernels[285]
-                        - kernels[286]
-                        ;
-                        votes[decisions[0] > 0 ? 0 : 1] += 1;
-                        votes[decisions[1] > 0 ? 0 : 2] += 1;
-                        votes[decisions[2] > 0 ? 0 : 3] += 1;
-                        votes[decisions[3] > 0 ? 1 : 2] += 1;
-                        votes[decisions[4] > 0 ? 1 : 3] += 1;
-                        votes[decisions[5] > 0 ? 2 : 3] += 1;
-                        int val = votes[0];
-                        int idx = 0;
-
-                        for (int i = 1; i < 4; i++) {
-                            if (votes[i] > val) {
-                                val = votes[i];
-                                idx = i;
-                            }
-                        }
-
-                        return idx;
-                    }
-
-                protected:
-                    /**
-                    * Compute kernel between feature vector and support vector.
-                    * Kernel type: rbf
-                    */
-                    float compute_kernel(float *x, ...) {
-                        va_list w;
-                        va_start(w, 5);
-                        float kernel = 0.0;
-
-                        for (uint16_t i = 0; i < 5; i++) {
-                            kernel += pow(x[i] - va_arg(w, double), 2);
-                        }
-
-                        return exp(-0.001 * kernel);
-                    }
-                };
-            }
-        }
-    }
+#include <math.h>
+#include <string.h>
+void score(double * input, double * output) {
+    double var0;
+    var0 = exp((-0.5) * (((((pow((21.0) - (input[0]), 2.0)) + (pow((102.0) - (input[1]), 2.0))) + (pow((100.0) - (input[2]), 2.0))) + (pow((221.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var1;
+    var1 = exp((-0.5) * (((((pow((21.0) - (input[0]), 2.0)) + (pow((102.0) - (input[1]), 2.0))) + (pow((101.0) - (input[2]), 2.0))) + (pow((222.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var2;
+    var2 = exp((-0.5) * (((((pow((21.0) - (input[0]), 2.0)) + (pow((101.0) - (input[1]), 2.0))) + (pow((100.0) - (input[2]), 2.0))) + (pow((220.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var3;
+    var3 = exp((-0.5) * (((((pow((12.0) - (input[0]), 2.0)) + (pow((100.0) - (input[1]), 2.0))) + (pow((21.0) - (input[2]), 2.0))) + (pow((200.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var4;
+    var4 = exp((-0.5) * (((((pow((21.0) - (input[0]), 2.0)) + (pow((101.0) - (input[1]), 2.0))) + (pow((100.0) - (input[2]), 2.0))) + (pow((212.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var5;
+    var5 = exp((-0.5) * (((((pow((22.0) - (input[0]), 2.0)) + (pow((110.0) - (input[1]), 2.0))) + (pow((101.0) - (input[2]), 2.0))) + (pow((1000.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var6;
+    var6 = exp((-0.5) * (((((pow((20.0) - (input[0]), 2.0)) + (pow((100.0) - (input[1]), 2.0))) + (pow((21.0) - (input[2]), 2.0))) + (pow((202.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var7;
+    var7 = exp((-0.5) * (((((pow((21.0) - (input[0]), 2.0)) + (pow((102.0) - (input[1]), 2.0))) + (pow((100.0) - (input[2]), 2.0))) + (pow((212.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var8;
+    var8 = exp((-0.5) * (((((pow((21.0) - (input[0]), 2.0)) + (pow((102.0) - (input[1]), 2.0))) + (pow((100.0) - (input[2]), 2.0))) + (pow((222.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var9;
+    var9 = exp((-0.5) * (((((pow((11.0) - (input[0]), 2.0)) + (pow((21.0) - (input[1]), 2.0))) + (pow((12.0) - (input[2]), 2.0))) + (pow((112.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var10;
+    var10 = exp((-0.5) * (((((pow((20.0) - (input[0]), 2.0)) + (pow((100.0) - (input[1]), 2.0))) + (pow((22.0) - (input[2]), 2.0))) + (pow((202.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var11;
+    var11 = exp((-0.5) * (((((pow((12.0) - (input[0]), 2.0)) + (pow((100.0) - (input[1]), 2.0))) + (pow((21.0) - (input[2]), 2.0))) + (pow((201.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var12;
+    var12 = exp((-0.5) * (((((pow((20.0) - (input[0]), 2.0)) + (pow((101.0) - (input[1]), 2.0))) + (pow((22.0) - (input[2]), 2.0))) + (pow((211.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var13;
+    var13 = exp((-0.5) * (((((pow((12.0) - (input[0]), 2.0)) + (pow((22.0) - (input[1]), 2.0))) + (pow((21.0) - (input[2]), 2.0))) + (pow((200.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var14;
+    var14 = exp((-0.5) * (((((pow((22.0) - (input[0]), 2.0)) + (pow((102.0) - (input[1]), 2.0))) + (pow((101.0) - (input[2]), 2.0))) + (pow((1000.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var15;
+    var15 = exp((-0.5) * (((((pow((22.0) - (input[0]), 2.0)) + (pow((102.0) - (input[1]), 2.0))) + (pow((100.0) - (input[2]), 2.0))) + (pow((1000.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var16;
+    var16 = exp((-0.5) * (((((pow((21.0) - (input[0]), 2.0)) + (pow((101.0) - (input[1]), 2.0))) + (pow((22.0) - (input[2]), 2.0))) + (pow((212.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var17;
+    var17 = exp((-0.5) * (((((pow((20.0) - (input[0]), 2.0)) + (pow((100.0) - (input[1]), 2.0))) + (pow((21.0) - (input[2]), 2.0))) + (pow((201.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var18;
+    var18 = exp((-0.5) * (((((pow((11.0) - (input[0]), 2.0)) + (pow((21.0) - (input[1]), 2.0))) + (pow((20.0) - (input[2]), 2.0))) + (pow((120.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var19;
+    var19 = exp((-0.5) * (((((pow((21.0) - (input[0]), 2.0)) + (pow((102.0) - (input[1]), 2.0))) + (pow((100.0) - (input[2]), 2.0))) + (pow((220.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var20;
+    var20 = exp((-0.5) * (((((pow((12.0) - (input[0]), 2.0)) + (pow((22.0) - (input[1]), 2.0))) + (pow((21.0) - (input[2]), 2.0))) + (pow((122.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var21;
+    var21 = exp((-0.5) * (((((pow((12.0) - (input[0]), 2.0)) + (pow((22.0) - (input[1]), 2.0))) + (pow((20.0) - (input[2]), 2.0))) + (pow((121.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var22;
+    var22 = exp((-0.5) * (((((pow((21.0) - (input[0]), 2.0)) + (pow((101.0) - (input[1]), 2.0))) + (pow((22.0) - (input[2]), 2.0))) + (pow((221.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var23;
+    var23 = exp((-0.5) * (((((pow((100.0) - (input[0]), 2.0)) + (pow((112.0) - (input[1]), 2.0))) + (pow((110.0) - (input[2]), 2.0))) + (pow((1002.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var24;
+    var24 = exp((-0.5) * (((((pow((102.0) - (input[0]), 2.0)) + (pow((120.0) - (input[1]), 2.0))) + (pow((112.0) - (input[2]), 2.0))) + (pow((1102.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var25;
+    var25 = exp((-0.5) * (((((pow((101.0) - (input[0]), 2.0)) + (pow((120.0) - (input[1]), 2.0))) + (pow((112.0) - (input[2]), 2.0))) + (pow((1102.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var26;
+    var26 = exp((-0.5) * (((((pow((100.0) - (input[0]), 2.0)) + (pow((111.0) - (input[1]), 2.0))) + (pow((102.0) - (input[2]), 2.0))) + (pow((1011.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var27;
+    var27 = exp((-0.5) * (((((pow((110.0) - (input[0]), 2.0)) + (pow((122.0) - (input[1]), 2.0))) + (pow((120.0) - (input[2]), 2.0))) + (pow((1120.0) - (input[3]), 2.0))) + (pow((111.0) - (input[4]), 2.0))));
+    double var28;
+    var28 = exp((-0.5) * (((((pow((100.0) - (input[0]), 2.0)) + (pow((112.0) - (input[1]), 2.0))) + (pow((111.0) - (input[2]), 2.0))) + (pow((1012.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var29;
+    var29 = exp((-0.5) * (((((pow((21.0) - (input[0]), 2.0)) + (pow((101.0) - (input[1]), 2.0))) + (pow((22.0) - (input[2]), 2.0))) + (pow((211.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var30;
+    var30 = exp((-0.5) * (((((pow((22.0) - (input[0]), 2.0)) + (pow((111.0) - (input[1]), 2.0))) + (pow((110.0) - (input[2]), 2.0))) + (pow((1002.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var31;
+    var31 = exp((-0.5) * (((((pow((22.0) - (input[0]), 2.0)) + (pow((110.0) - (input[1]), 2.0))) + (pow((101.0) - (input[2]), 2.0))) + (pow((222.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var32;
+    var32 = exp((-0.5) * (((((pow((22.0) - (input[0]), 2.0)) + (pow((102.0) - (input[1]), 2.0))) + (pow((100.0) - (input[2]), 2.0))) + (pow((222.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var33;
+    var33 = exp((-0.5) * (((((pow((100.0) - (input[0]), 2.0)) + (pow((112.0) - (input[1]), 2.0))) + (pow((110.0) - (input[2]), 2.0))) + (pow((1012.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var34;
+    var34 = exp((-0.5) * (((((pow((22.0) - (input[0]), 2.0)) + (pow((110.0) - (input[1]), 2.0))) + (pow((101.0) - (input[2]), 2.0))) + (pow((1001.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var35;
+    var35 = exp((-0.5) * (((((pow((101.0) - (input[0]), 2.0)) + (pow((120.0) - (input[1]), 2.0))) + (pow((111.0) - (input[2]), 2.0))) + (pow((1101.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var36;
+    var36 = exp((-0.5) * (((((pow((111.0) - (input[0]), 2.0)) + (pow((200.0) - (input[1]), 2.0))) + (pow((121.0) - (input[2]), 2.0))) + (pow((1200.0) - (input[3]), 2.0))) + (pow((1201.0) - (input[4]), 2.0))));
+    double var37;
+    var37 = exp((-0.5) * (((((pow((22.0) - (input[0]), 2.0)) + (pow((111.0) - (input[1]), 2.0))) + (pow((102.0) - (input[2]), 2.0))) + (pow((1001.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var38;
+    var38 = exp((-0.5) * (((((pow((100.0) - (input[0]), 2.0)) + (pow((112.0) - (input[1]), 2.0))) + (pow((110.0) - (input[2]), 2.0))) + (pow((1021.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var39;
+    var39 = exp((-0.5) * (((((pow((112.0) - (input[0]), 2.0)) + (pow((200.0) - (input[1]), 2.0))) + (pow((121.0) - (input[2]), 2.0))) + (pow((1201.0) - (input[3]), 2.0))) + (pow((2022.0) - (input[4]), 2.0))));
+    double var40;
+    var40 = exp((-0.5) * (((((pow((111.0) - (input[0]), 2.0)) + (pow((200.0) - (input[1]), 2.0))) + (pow((121.0) - (input[2]), 2.0))) + (pow((1200.0) - (input[3]), 2.0))) + (pow((1222.0) - (input[4]), 2.0))));
+    double var41;
+    var41 = exp((-0.5) * (((((pow((111.0) - (input[0]), 2.0)) + (pow((200.0) - (input[1]), 2.0))) + (pow((121.0) - (input[2]), 2.0))) + (pow((1201.0) - (input[3]), 2.0))) + (pow((2002.0) - (input[4]), 2.0))));
+    double var42;
+    var42 = exp((-0.5) * (((((pow((100.0) - (input[0]), 2.0)) + (pow((111.0) - (input[1]), 2.0))) + (pow((110.0) - (input[2]), 2.0))) + (pow((1010.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var43;
+    var43 = exp((-0.5) * (((((pow((101.0) - (input[0]), 2.0)) + (pow((120.0) - (input[1]), 2.0))) + (pow((111.0) - (input[2]), 2.0))) + (pow((1021.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var44;
+    var44 = exp((-0.5) * (((((pow((102.0) - (input[0]), 2.0)) + (pow((121.0) - (input[1]), 2.0))) + (pow((112.0) - (input[2]), 2.0))) + (pow((1110.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var45;
+    var45 = exp((-0.5) * (((((pow((21.0) - (input[0]), 2.0)) + (pow((101.0) - (input[1]), 2.0))) + (pow((100.0) - (input[2]), 2.0))) + (pow((211.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var46;
+    var46 = exp((-0.5) * (((((pow((110.0) - (input[0]), 2.0)) + (pow((122.0) - (input[1]), 2.0))) + (pow((120.0) - (input[2]), 2.0))) + (pow((1121.0) - (input[3]), 2.0))) + (pow((1011.0) - (input[4]), 2.0))));
+    double var47;
+    var47 = exp((-0.5) * (((((pow((110.0) - (input[0]), 2.0)) + (pow((122.0) - (input[1]), 2.0))) + (pow((120.0) - (input[2]), 2.0))) + (pow((1121.0) - (input[3]), 2.0))) + (pow((210.0) - (input[4]), 2.0))));
+    double var48;
+    var48 = exp((-0.5) * (((((pow((111.0) - (input[0]), 2.0)) + (pow((122.0) - (input[1]), 2.0))) + (pow((121.0) - (input[2]), 2.0))) + (pow((1122.0) - (input[3]), 2.0))) + (pow((1102.0) - (input[4]), 2.0))));
+    double var49;
+    var49 = exp((-0.5) * (((((pow((100.0) - (input[0]), 2.0)) + (pow((111.0) - (input[1]), 2.0))) + (pow((110.0) - (input[2]), 2.0))) + (pow((1012.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var50;
+    var50 = exp((-0.5) * (((((pow((100.0) - (input[0]), 2.0)) + (pow((111.0) - (input[1]), 2.0))) + (pow((102.0) - (input[2]), 2.0))) + (pow((1010.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var51;
+    var51 = exp((-0.5) * (((((pow((102.0) - (input[0]), 2.0)) + (pow((121.0) - (input[1]), 2.0))) + (pow((120.0) - (input[2]), 2.0))) + (pow((1111.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var52;
+    var52 = exp((-0.5) * (((((pow((100.0) - (input[0]), 2.0)) + (pow((112.0) - (input[1]), 2.0))) + (pow((110.0) - (input[2]), 2.0))) + (pow((1020.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var53;
+    var53 = exp((-0.5) * (((((pow((101.0) - (input[0]), 2.0)) + (pow((112.0) - (input[1]), 2.0))) + (pow((111.0) - (input[2]), 2.0))) + (pow((1022.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var54;
+    var54 = exp((-0.5) * (((((pow((110.0) - (input[0]), 2.0)) + (pow((122.0) - (input[1]), 2.0))) + (pow((120.0) - (input[2]), 2.0))) + (pow((1120.0) - (input[3]), 2.0))) + (pow((10.0) - (input[4]), 2.0))));
+    double var55;
+    var55 = exp((-0.5) * (((((pow((22.0) - (input[0]), 2.0)) + (pow((110.0) - (input[1]), 2.0))) + (pow((102.0) - (input[2]), 2.0))) + (pow((1001.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var56;
+    var56 = exp((-0.5) * (((((pow((112.0) - (input[0]), 2.0)) + (pow((200.0) - (input[1]), 2.0))) + (pow((121.0) - (input[2]), 2.0))) + (pow((1201.0) - (input[3]), 2.0))) + (pow((2020.0) - (input[4]), 2.0))));
+    double var57;
+    var57 = exp((-0.5) * (((((pow((101.0) - (input[0]), 2.0)) + (pow((120.0) - (input[1]), 2.0))) + (pow((111.0) - (input[2]), 2.0))) + (pow((1100.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var58;
+    var58 = exp((-0.5) * (((((pow((100.0) - (input[0]), 2.0)) + (pow((112.0) - (input[1]), 2.0))) + (pow((111.0) - (input[2]), 2.0))) + (pow((1021.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var59;
+    var59 = exp((-0.5) * (((((pow((21.0) - (input[0]), 2.0)) + (pow((110.0) - (input[1]), 2.0))) + (pow((101.0) - (input[2]), 2.0))) + (pow((221.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var60;
+    var60 = exp((-0.5) * (((((pow((22.0) - (input[0]), 2.0)) + (pow((111.0) - (input[1]), 2.0))) + (pow((102.0) - (input[2]), 2.0))) + (pow((1002.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var61;
+    var61 = exp((-0.5) * (((((pow((100.0) - (input[0]), 2.0)) + (pow((112.0) - (input[1]), 2.0))) + (pow((110.0) - (input[2]), 2.0))) + (pow((1010.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var62;
+    var62 = exp((-0.5) * (((((pow((111.0) - (input[0]), 2.0)) + (pow((200.0) - (input[1]), 2.0))) + (pow((121.0) - (input[2]), 2.0))) + (pow((1200.0) - (input[3]), 2.0))) + (pow((1100.0) - (input[4]), 2.0))));
+    double var63;
+    var63 = exp((-0.5) * (((((pow((102.0) - (input[0]), 2.0)) + (pow((122.0) - (input[1]), 2.0))) + (pow((120.0) - (input[2]), 2.0))) + (pow((1112.0) - (input[3]), 2.0))) + (pow((10.0) - (input[4]), 2.0))));
+    double var64;
+    var64 = exp((-0.5) * (((((pow((22.0) - (input[0]), 2.0)) + (pow((112.0) - (input[1]), 2.0))) + (pow((110.0) - (input[2]), 2.0))) + (pow((1002.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var65;
+    var65 = exp((-0.5) * (((((pow((22.0) - (input[0]), 2.0)) + (pow((102.0) - (input[1]), 2.0))) + (pow((101.0) - (input[2]), 2.0))) + (pow((222.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var66;
+    var66 = exp((-0.5) * (((((pow((101.0) - (input[0]), 2.0)) + (pow((120.0) - (input[1]), 2.0))) + (pow((112.0) - (input[2]), 2.0))) + (pow((1101.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var67;
+    var67 = exp((-0.5) * (((((pow((101.0) - (input[0]), 2.0)) + (pow((121.0) - (input[1]), 2.0))) + (pow((112.0) - (input[2]), 2.0))) + (pow((1102.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var68;
+    var68 = exp((-0.5) * (((((pow((22.0) - (input[0]), 2.0)) + (pow((111.0) - (input[1]), 2.0))) + (pow((102.0) - (input[2]), 2.0))) + (pow((1010.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var69;
+    var69 = exp((-0.5) * (((((pow((22.0) - (input[0]), 2.0)) + (pow((102.0) - (input[1]), 2.0))) + (pow((100.0) - (input[2]), 2.0))) + (pow((221.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var70;
+    var70 = exp((-0.5) * (((((pow((101.0) - (input[0]), 2.0)) + (pow((112.0) - (input[1]), 2.0))) + (pow((110.0) - (input[2]), 2.0))) + (pow((1020.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var71;
+    var71 = exp((-0.5) * (((((pow((22.0) - (input[0]), 2.0)) + (pow((110.0) - (input[1]), 2.0))) + (pow((100.0) - (input[2]), 2.0))) + (pow((221.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var72;
+    var72 = exp((-0.5) * (((((pow((101.0) - (input[0]), 2.0)) + (pow((120.0) - (input[1]), 2.0))) + (pow((110.0) - (input[2]), 2.0))) + (pow((1012.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var73;
+    var73 = exp((-0.5) * (((((pow((101.0) - (input[0]), 2.0)) + (pow((120.0) - (input[1]), 2.0))) + (pow((110.0) - (input[2]), 2.0))) + (pow((1020.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var74;
+    var74 = exp((-0.5) * (((((pow((100.0) - (input[0]), 2.0)) + (pow((111.0) - (input[1]), 2.0))) + (pow((101.0) - (input[2]), 2.0))) + (pow((1001.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var75;
+    var75 = exp((-0.5) * (((((pow((100.0) - (input[0]), 2.0)) + (pow((112.0) - (input[1]), 2.0))) + (pow((102.0) - (input[2]), 2.0))) + (pow((1012.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var76;
+    var76 = exp((-0.5) * (((((pow((22.0) - (input[0]), 2.0)) + (pow((110.0) - (input[1]), 2.0))) + (pow((100.0) - (input[2]), 2.0))) + (pow((222.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var77;
+    var77 = exp((-0.5) * (((((pow((101.0) - (input[0]), 2.0)) + (pow((112.0) - (input[1]), 2.0))) + (pow((110.0) - (input[2]), 2.0))) + (pow((1012.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var78;
+    var78 = exp((-0.5) * (((((pow((101.0) - (input[0]), 2.0)) + (pow((112.0) - (input[1]), 2.0))) + (pow((102.0) - (input[2]), 2.0))) + (pow((1012.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var79;
+    var79 = exp((-0.5) * (((((pow((22.0) - (input[0]), 2.0)) + (pow((111.0) - (input[1]), 2.0))) + (pow((101.0) - (input[2]), 2.0))) + (pow((1001.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var80;
+    var80 = exp((-0.5) * (((((pow((100.0) - (input[0]), 2.0)) + (pow((111.0) - (input[1]), 2.0))) + (pow((102.0) - (input[2]), 2.0))) + (pow((1002.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var81;
+    var81 = exp((-0.5) * (((((pow((100.0) - (input[0]), 2.0)) + (pow((112.0) - (input[1]), 2.0))) + (pow((102.0) - (input[2]), 2.0))) + (pow((1010.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var82;
+    var82 = exp((-0.5) * (((((pow((100.0) - (input[0]), 2.0)) + (pow((112.0) - (input[1]), 2.0))) + (pow((102.0) - (input[2]), 2.0))) + (pow((1011.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var83;
+    var83 = exp((-0.5) * (((((pow((100.0) - (input[0]), 2.0)) + (pow((111.0) - (input[1]), 2.0))) + (pow((101.0) - (input[2]), 2.0))) + (pow((1002.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var84;
+    var84 = exp((-0.5) * (((((pow((102.0) - (input[0]), 2.0)) + (pow((120.0) - (input[1]), 2.0))) + (pow((111.0) - (input[2]), 2.0))) + (pow((1022.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    double var85;
+    var85 = exp((-0.5) * (((((pow((110.0) - (input[0]), 2.0)) + (pow((122.0) - (input[1]), 2.0))) + (pow((112.0) - (input[2]), 2.0))) + (pow((1110.0) - (input[3]), 2.0))) + (pow((0.0) - (input[4]), 2.0))));
+    memcpy(output, (double[]){(((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((0.4538750927638261) + ((var0) * (-1.0))) + ((var1) * (-1.0))) + ((var2) * (-0.9048325785447894))) + ((var3) * (-0.9050350303683559))) + ((var4) * (-0.11728890900077152))) + ((var5) * (-1.0))) + ((var6) * (-0.35644826762227944))) + ((var7) * (-0.9157620243358409))) + ((var8) * (-1.0))) + ((var9) * (-1.0))) + ((var10) * (-0.9043981072810893))) + ((var7) * (-1.0))) + ((var11) * (-0.905035030368331))) + ((var12) * (-0.9563441574573478))) + ((var13) * (-0.536187320271067))) + ((var13) * (-0.9176471322349103))) + ((var12) * (-1.0))) + ((var14) * (-0.9054031986703157))) + ((var12) * (-0.9936897074642778))) + ((var15) * (-0.0))) + ((var8) * (-1.0))) + ((var4) * (-1.0))) + ((var7) * (-1.0))) + ((var4) * (-1.0))) + ((var16) * (-1.0))) + ((var17) * (-0.9049823072961045))) + ((var18) * (-1.0))) + ((var19) * (-0.0))) + ((var19) * (-0.7915936589265063))) + ((var19) * (-1.0))) + ((var19) * (-1.0))) + ((var4) * (-1.0))) + ((var20) * (-1.0))) + ((var21) * (-0.8625731584289517))) + ((var19) * (-0.9569617282690592))) + ((var7) * (-0.989766862181155))) + ((var5) * (-1.0))) + ((var16) * (-0.9497168256290378))) + ((var22) * (-1.0))) + ((var15) * (-0.90436661176152))) + ((var0) * (-1.0))) + ((var23) * (0.5456985741475637))) + ((var24) * (0.3399739297377986))) + ((var25) * (0.024406709947063388))) + ((var26) * (0.0))) + ((var27) * (0.546154602313714))) + ((var28) * (0.3400719549277686))) + ((var0) * (0.3302720945989146))) + ((var12) * (1.0))) + ((var5) * (0.0))) + ((var4) * (1.0))) + ((var7) * (1.0))) + ((var7) * (1.0))) + ((var29) * (1.0))) + ((var30) * (0.3402156200774116))) + ((var31) * (0.0))) + ((var32) * (0.5890351613902748))) + ((var5) * (1.0))) + ((var33) * (0.0))) + ((var34) * (0.0))) + ((var26) * (0.0))) + ((var31) * (0.0))) + ((var35) * (0.07592689802827758))) + ((var31) * (0.0))) + ((var0) * (1.0))) + ((var31) * (0.0))) + ((var0) * (1.0))) + ((var36) * (0.5459530090688336))) + ((var37) * (0.0))) + ((var38) * (0.09828445639339967))) + ((var39) * (0.48092851830958816))) + ((var40) * (0.5463559691987181))) + ((var34) * (0.10104004804357306))) + ((var41) * (0.5461655474940227))) + ((var42) * (0.2988674229625788))) + ((var31) * (0.0))) + ((var43) * (0.546168563763731))) + ((var44) * (0.5465138004622918))) + ((var31) * (0.0))) + ((var45) * (1.0))) + ((var31) * (0.0))) + ((var19) * (1.0))) + ((var46) * (0.5465138004623011))) + ((var37) * (0.10127544312995164))) + ((var47) * (0.5461551460125829))) + ((var0) * (1.0))) + ((var33) * (0.09224355329399839))) + ((var5) * (1.0))) + ((var48) * (0.5461359692740583))) + ((var49) * (0.3000455363461481))) + ((var50) * (0.3397002107354208))) + ((var51) * (0.5465047829554612))) + ((var7) * (1.0))) + ((var29) * (1.0))) + ((var52) * (0.3991240819624924))) + ((var53) * (0.43880093006566834))) + ((var1) * (1.0))) + ((var26) * (0.3397002107354212))) + ((var54) * (0.546154602313714))) + ((var55) * (0.13407277871446682))) + ((var56) * (0.4810493728714462))) + ((var57) * (0.43645883015186937))) + ((var5) * (0.39370396019468734))) + ((var58) * (0.1779614030247833))) + ((var59) * (0.3988951702834311))) + ((var31) * (0.3993261576061785))) + ((var60) * (0.3932588400840146))) + ((var0) * (1.0))) + ((var61) * (0.30025343322359777))) + ((var1) * (0.5898342310697431))) + ((var62) * (0.546045482482008))) + ((var63) * (0.5466520610869756))) + ((var0) * (0.9954910832955495))) + ((var64) * (0.3393294892269023))) + ((var65) * (0.0))) + ((var66) * (0.07436834637193666))) + ((var67) * (0.34029644487745186))) + ((var68) * (0.5466483833939265))) + ((var45) * (1.0)), (((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((0.5315941635292131) + ((var69) * (-0.6885553548183007))) + ((var70) * (-0.4934505236042191))) + ((var69) * (-1.0))) + ((var31) * (-1.0))) + ((var31) * (-1.0))) + ((var70) * (-1.0))) + ((var71) * (-0.3647599143306226))) + ((var69) * (-1.0))) + ((var0) * (-1.0))) + ((var69) * (-0.9934697893831894))) + ((var19) * (-1.0))) + ((var72) * (-1.0))) + ((var73) * (-1.0))) + ((var31) * (-1.0))) + ((var74) * (-0.0))) + ((var75) * (-0.9787971904888021))) + ((var76) * (-0.14551750974759295))) + ((var71) * (-0.8334948822397703))) + ((var19) * (-1.0))) + ((var15) * (-1.0))) + ((var74) * (-0.0))) + ((var50) * (-0.0))) + ((var34) * (-0.0))) + ((var50) * (-0.0))) + ((var34) * (-0.0))) + ((var31) * (-1.0))) + ((var74) * (-0.9531969152769606))) + ((var50) * (-0.7042716382948206))) + ((var7) * (-1.0))) + ((var50) * (-1.0))) + ((var77) * (-0.9007435672224755))) + ((var31) * (-1.0))) + ((var50) * (-1.0))) + ((var34) * (-1.0))) + ((var78) * (-0.9528909810125545))) + ((var19) * (-1.0))) + ((var77) * (-1.0))) + ((var77) * (-0.9721197279538077))) + ((var76) * (-1.0))) + ((var76) * (-1.0))) + ((var79) * (-0.9259229799405437))) + ((var80) * (-0.0))) + ((var79) * (-1.0))) + ((var34) * (-1.0))) + ((var50) * (-0.9993227702271443))) + ((var5) * (-1.0))) + ((var80) * (-0.0))) + ((var81) * (-0.0))) + ((var81) * (-0.0))) + ((var5) * (-1.0))) + ((var82) * (-0.0))) + ((var82) * (-0.4667991716507802))) + ((var70) * (-0.9205368079720045))) + ((var83) * (-0.3755173189370667))) + ((var82) * (-0.9459245879000469))) + ((var5) * (-1.0))) + ((var80) * (-0.0))) + ((var5) * (-1.0))) + ((var80) * (-0.0))) + ((var34) * (-0.9955042338287593))) + ((var31) * (-1.0))) + ((var5) * (-0.9311249279763942))) + ((var80) * (-0.9531969152769126))) + ((var23) * (0.4684777580658273))) + ((var24) * (0.29168512062096075))) + ((var25) * (0.020983253783787514))) + ((var26) * (1.0))) + ((var27) * (0.468239444177261))) + ((var28) * (0.29085152170497225))) + ((var0) * (0.0))) + ((var12) * (0.29186387438563927))) + ((var5) * (1.0))) + ((var4) * (0.11392992316777435))) + ((var7) * (0.0))) + ((var7) * (0.2979983005143814))) + ((var29) * (0.0))) + ((var30) * (0.29097237304035894))) + ((var31) * (0.9661908528679397))) + ((var32) * (1.0))) + ((var5) * (1.0))) + ((var33) * (0.8408014344778707))) + ((var34) * (1.0))) + ((var26) * (1.0))) + ((var31) * (1.0))) + ((var35) * (0.06480814448875309))) + ((var31) * (1.0))) + ((var0) * (0.42348019580242546))) + ((var31) * (1.0))) + ((var0) * (1.0))) + ((var36) * (0.4683683518530573))) + ((var37) * (0.503305344494269))) + ((var38) * (0.5730348719617586))) + ((var39) * (0.41261660731349326))) + ((var40) * (0.4683582702162069))) + ((var34) * (1.0))) + ((var41) * (0.4686512671939723))) + ((var42) * (0.2571636966472865))) + ((var31) * (1.0))) + ((var43) * (0.8358679025988891))) + ((var44) * (0.46865126719396416))) + ((var31) * (1.0))) + ((var45) * (0.0))) + ((var31) * (1.0))) + ((var19) * (1.0))) + ((var46) * (0.46817092837145213))) + ((var37) * (1.0))) + ((var47) * (0.4685505745227557))) + ((var0) * (1.0))) + ((var33) * (0.9829635657640139))) + ((var5) * (1.0))) + ((var48) * (0.4681707073468766))) + ((var49) * (0.25629531709864994))) + ((var50) * (1.0))) + ((var51) * (0.4680031356568631))) + ((var7) * (0.9939489310600496))) + ((var29) * (0.291142840312663))) + ((var52) * (1.0))) + ((var53) * (0.44141263782385065))) + ((var1) * (0.0))) + ((var26) * (1.0))) + ((var54) * (0.4685628703305078))) + ((var55) * (1.0))) + ((var56) * (0.41262821934134913))) + ((var57) * (0.37498453917963726))) + ((var5) * (1.0))) + ((var58) * (0.1292218123886526))) + ((var59) * (0.6642335644293157))) + ((var31) * (1.0))) + ((var60) * (0.16584547769789612))) + ((var0) * (1.0))) + ((var61) * (0.25652548883027115))) + ((var1) * (0.0))) + ((var62) * (0.46849967811036286))) + ((var63) * (0.46841221011932554))) + ((var0) * (1.0))) + ((var64) * (0.29248855826969533))) + ((var65) * (0.5522160779814493))) + ((var66) * (0.06365798181988085))) + ((var67) * (0.29222554142513824))) + ((var68) * (0.46863624831626277))) + ((var45) * (0.2920210253150007)), ((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((0.6691863656000728) + ((var71) * (-1.0))) + ((var80) * (-0.0))) + ((var19) * (-0.6840795003122507))) + ((var73) * (-1.0))) + ((var72) * (-1.0))) + ((var74) * (-0.31606027483939936))) + ((var31) * (-1.0))) + ((var50) * (-0.0))) + ((var80) * (-0.0))) + ((var82) * (-0.6401154081803431))) + ((var69) * (-0.7051055437076436))) + ((var80) * (-0.24776692288149538))) + ((var82) * (-1.0))) + ((var69) * (-1.0))) + ((var31) * (-1.0))) + ((var50) * (-0.5501694954436287))) + ((var0) * (-1.0))) + ((var84) * (-1.0))) + ((var31) * (-1.0))) + ((var81) * (-0.0))) + ((var5) * (-1.0))) + ((var19) * (-1.0))) + ((var34) * (-1.0))) + ((var34) * (-1.0))) + ((var5) * (-1.0))) + ((var50) * (-1.0))) + ((var69) * (-1.0))) + ((var19) * (-1.0))) + ((var5) * (-1.0))) + ((var50) * (-1.0))) + ((var69) * (-1.0))) + ((var34) * (-1.0))) + ((var85) * (-1.0))) + ((var77) * (-1.0))) + ((var34) * (-1.0))) + ((var19) * (-0.9989866205213074))) + ((var74) * (-0.9041447239209695))) + ((var80) * (-0.9726577205845863))) + ((var82) * (-0.9104513113559156))) + ((var50) * (-1.0))) + ((var23) * (0.33060021320722505))) + ((var24) * (0.20685552397436613))) + ((var25) * (0.013633121114034105))) + ((var26) * (1.0))) + ((var27) * (0.3306002132072194))) + ((var28) * (0.20631760818025166))) + ((var0) * (0.0))) + ((var12) * (0.206542291313282))) + ((var5) * (1.0))) + ((var4) * (0.08060372288881433))) + ((var7) * (0.0))) + ((var7) * (0.0))) + ((var29) * (0.0))) + ((var30) * (0.2058366397421479))) + ((var31) * (0.0))) + ((var32) * (1.0))) + ((var5) * (1.0))) + ((var33) * (0.0))) + ((var34) * (1.0))) + ((var26) * (1.0))) + ((var31) * (0.0))) + ((var35) * (0.045543753536858744))) + ((var31) * (0.0))) + ((var0) * (0.7520573452808754))) + ((var31) * (0.0))) + ((var0) * (1.0))) + ((var36) * (0.3305704681147906))) + ((var37) * (0.0))) + ((var38) * (0.05842585493426418))) + ((var39) * (0.2909986295415643))) + ((var40) * (0.3307371455254905))) + ((var34) * (1.0))) + ((var41) * (0.3308924241870402))) + ((var42) * (0.18130423428383932))) + ((var31) * (1.0))) + ((var43) * (1.0))) + ((var44) * (0.33126826740268567))) + ((var31) * (1.0))) + ((var45) * (0.0))) + ((var31) * (1.0))) + ((var19) * (1.0))) + ((var46) * (0.33067825627141056))) + ((var37) * (0.029159745676794326))) + ((var47) * (0.331085267097964))) + ((var0) * (1.0))) + ((var33) * (0.662310930658111))) + ((var5) * (1.0))) + ((var48) * (0.33082585424288563))) + ((var49) * (0.18147346043417178))) + ((var50) * (1.0))) + ((var51) * (0.3308059869873897))) + ((var7) * (0.20593591710469494))) + ((var29) * (0.20558399911936998))) + ((var52) * (0.24263887739431794))) + ((var53) * (0.2663550536052042))) + ((var1) * (0.0))) + ((var26) * (1.0))) + ((var54) * (0.3311567460438634))) + ((var55) * (1.0))) + ((var56) * (0.2911086835246757))) + ((var57) * (0.26418317295804533))) + ((var5) * (1.0))) + ((var58) * (0.10813552381439563))) + ((var59) * (0.5109542161157038))) + ((var31) * (0.5104791230482416))) + ((var60) * (0.34206342320645783))) + ((var0) * (1.0))) + ((var61) * (0.1813241578144625))) + ((var1) * (0.0))) + ((var62) * (0.33041255990647794))) + ((var63) * (0.331127136271391))) + ((var0) * (1.0))) + ((var64) * (0.2061444081499498))) + ((var65) * (0.3834526968684775))) + ((var66) * (0.046050329787752406))) + ((var67) * (0.20620916305006756))) + ((var68) * (0.33088536520118716))) + ((var45) * (0.20621001095932662)), ((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((0.10663294220093847) + ((var69) * (-0.0))) + ((var70) * (-0.0))) + ((var69) * (-0.4974361923530938))) + ((var31) * (-0.0))) + ((var31) * (-0.0))) + ((var70) * (-0.1070659217799328))) + ((var71) * (-0.0))) + ((var69) * (-1.0))) + ((var0) * (-1.0))) + ((var69) * (-0.9958237475402223))) + ((var19) * (-1.0))) + ((var72) * (-1.0))) + ((var73) * (-1.0))) + ((var31) * (-0.0))) + ((var74) * (-0.0))) + ((var75) * (-0.5572041464719603))) + ((var76) * (-0.0))) + ((var71) * (-0.688162793200053))) + ((var19) * (-1.0))) + ((var15) * (-1.0))) + ((var74) * (-0.0))) + ((var50) * (-0.0))) + ((var34) * (-0.0))) + ((var50) * (-0.0))) + ((var34) * (-0.0))) + ((var31) * (-0.0))) + ((var74) * (-0.6895525202460635))) + ((var50) * (-0.0))) + ((var7) * (-1.0))) + ((var50) * (-0.0))) + ((var77) * (-0.0))) + ((var31) * (-0.0))) + ((var50) * (-0.0))) + ((var34) * (-0.0))) + ((var78) * (-0.6885876776137725))) + ((var19) * (-1.0))) + ((var77) * (-0.10684154855114139))) + ((var77) * (-1.0))) + ((var76) * (-0.0))) + ((var76) * (-0.27179036786409644))) + ((var79) * (-0.0))) + ((var80) * (-0.0))) + ((var79) * (-0.6891551692773396))) + ((var34) * (-0.0))) + ((var50) * (-0.6893325496969286))) + ((var5) * (-0.0))) + ((var80) * (-0.0))) + ((var81) * (-0.0))) + ((var81) * (-0.5565093861960583))) + ((var5) * (-0.0))) + ((var82) * (-0.0))) + ((var82) * (-0.0))) + ((var70) * (-1.0))) + ((var83) * (-0.27006061014250893))) + ((var82) * (-0.0))) + ((var5) * (-1.0))) + ((var80) * (-0.0))) + ((var5) * (-1.0))) + ((var80) * (-0.0))) + ((var34) * (-0.27092458282623466))) + ((var31) * (-0.6881627932000768))) + ((var5) * (-0.6889183249467685))) + ((var80) * (-0.6891717869908546))) + ((var0) * (1.0))) + ((var1) * (0.5564719043085274))) + ((var2) * (0.5555479587615018))) + ((var3) * (0.5557413460344702))) + ((var4) * (0.0))) + ((var5) * (1.0))) + ((var6) * (0.2186592477996993))) + ((var7) * (0.0))) + ((var8) * (0.0))) + ((var9) * (0.893569452678093))) + ((var10) * (0.5563267700974168))) + ((var7) * (0.0))) + ((var11) * (0.5562746933809337))) + ((var12) * (0.0))) + ((var13) * (0.0))) + ((var13) * (0.8931792763210633))) + ((var12) * (0.0))) + ((var14) * (0.555420441460035))) + ((var12) * (0.6530437422444815))) + ((var15) * (0.5879382557658245))) + ((var8) * (0.7226748336691661))) + ((var4) * (0.0))) + ((var7) * (0.5557975218440654))) + ((var4) * (0.0))) + ((var16) * (0.0))) + ((var17) * (0.5561996836387436))) + ((var18) * (0.7687164182952267))) + ((var19) * (0.0))) + ((var19) * (1.0))) + ((var19) * (1.0))) + ((var19) * (1.0))) + ((var4) * (0.5563177158197534))) + ((var20) * (0.6993627037559499))) + ((var21) * (0.464231911407391))) + ((var19) * (0.7240860390619801))) + ((var7) * (1.0))) + ((var5) * (1.0))) + ((var16) * (0.6531329240788457))) + ((var22) * (0.8933406554106645))) + ((var15) * (0.9686666230632731))) + ((var0) * (1.0)), (((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((0.12614973876066954) + ((var71) * (-0.8230585241401607))) + ((var80) * (-0.0))) + ((var19) * (-1.0))) + ((var73) * (-1.0))) + ((var72) * (-1.0))) + ((var74) * (-0.0))) + ((var31) * (-0.0))) + ((var50) * (-0.0))) + ((var80) * (-0.0))) + ((var82) * (-0.0))) + ((var69) * (-0.0))) + ((var80) * (-0.0))) + ((var82) * (-0.0))) + ((var69) * (-0.5021715291201344))) + ((var31) * (-0.0))) + ((var50) * (-0.0))) + ((var0) * (-1.0))) + ((var84) * (-1.0))) + ((var31) * (-0.8238138292294335))) + ((var81) * (-0.2753409306023639))) + ((var5) * (-1.0))) + ((var19) * (-1.0))) + ((var34) * (-0.0))) + ((var34) * (-0.0))) + ((var5) * (-1.0))) + ((var50) * (-0.0))) + ((var69) * (-1.0))) + ((var19) * (-1.0))) + ((var5) * (-0.7014322103034368))) + ((var50) * (-0.0))) + ((var69) * (-1.0))) + ((var34) * (-0.0))) + ((var85) * (-1.0))) + ((var77) * (-1.0))) + ((var34) * (-0.7007601820504022))) + ((var19) * (-1.0))) + ((var74) * (-0.823653945317498))) + ((var80) * (-0.8233219359127043))) + ((var82) * (-0.7013386595213418))) + ((var50) * (-0.7007490604277582))) + ((var0) * (1.0))) + ((var1) * (0.5437733496135687))) + ((var2) * (0.544511709441716))) + ((var3) * (0.5443292996331219))) + ((var4) * (0.0))) + ((var5) * (1.0))) + ((var6) * (0.2142611041635017))) + ((var7) * (0.0))) + ((var8) * (0.0))) + ((var9) * (0.8736727034289978))) + ((var10) * (0.5440694128615673))) + ((var7) * (0.0))) + ((var11) * (0.5437150303823155))) + ((var12) * (0.0))) + ((var13) * (0.0))) + ((var13) * (0.8739554582626659))) + ((var12) * (0.0))) + ((var14) * (0.5435256084037422))) + ((var12) * (0.6385885595607114))) + ((var15) * (0.0))) + ((var8) * (0.7161460485326797))) + ((var4) * (0.0))) + ((var7) * (0.0))) + ((var4) * (0.0))) + ((var16) * (0.0))) + ((var17) * (0.5434199489780911))) + ((var18) * (0.7517599998342934))) + ((var19) * (0.8311745018294446))) + ((var19) * (1.0))) + ((var19) * (1.0))) + ((var19) * (1.0))) + ((var4) * (0.5443866584307396))) + ((var20) * (0.683845023158071))) + ((var21) * (0.45469749527273623))) + ((var19) * (0.884809445016783))) + ((var7) * (0.5436695487593075))) + ((var5) * (1.0))) + ((var16) * (0.6390207621344216))) + ((var22) * (0.873779271019054))) + ((var15) * (0.5445298679077036))) + ((var0) * (1.0)), (((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((0.7204865320773045) + ((var71) * (-1.0))) + ((var80) * (-1.0))) + ((var19) * (-1.0))) + ((var73) * (-1.0))) + ((var72) * (-1.0))) + ((var74) * (-1.0))) + ((var31) * (-1.0))) + ((var50) * (-1.0))) + ((var80) * (-1.0))) + ((var82) * (-1.0))) + ((var69) * (-1.0))) + ((var80) * (-1.0))) + ((var82) * (-1.0))) + ((var69) * (-1.0))) + ((var31) * (-1.0))) + ((var50) * (-1.0))) + ((var0) * (-1.0))) + ((var84) * (-1.0))) + ((var31) * (-1.0))) + ((var81) * (-1.0))) + ((var5) * (-1.0))) + ((var19) * (-1.0))) + ((var34) * (-1.0))) + ((var34) * (-1.0))) + ((var5) * (-1.0))) + ((var50) * (-1.0))) + ((var69) * (-1.0))) + ((var19) * (-1.0))) + ((var5) * (-1.0))) + ((var50) * (-1.0))) + ((var69) * (-1.0))) + ((var34) * (-1.0))) + ((var85) * (-1.0))) + ((var77) * (-1.0))) + ((var34) * (-1.0))) + ((var19) * (-1.0))) + ((var74) * (-1.0))) + ((var80) * (-1.0))) + ((var82) * (-1.0))) + ((var50) * (-1.0))) + ((var69) * (1.0))) + ((var70) * (0.0))) + ((var69) * (1.0))) + ((var31) * (0.0))) + ((var31) * (0.0))) + ((var70) * (0.0))) + ((var71) * (1.0))) + ((var69) * (1.0))) + ((var0) * (1.0))) + ((var69) * (1.0))) + ((var19) * (1.0))) + ((var72) * (1.0))) + ((var73) * (1.0))) + ((var31) * (0.19555661308680772))) + ((var74) * (0.49999999999999367))) + ((var75) * (0.169069078065488))) + ((var76) * (0.0))) + ((var71) * (0.17442965912006114))) + ((var19) * (1.0))) + ((var15) * (0.27916369478439174))) + ((var74) * (1.0))) + ((var50) * (0.1747884794925273))) + ((var34) * (0.0681506566354538))) + ((var50) * (1.0))) + ((var34) * (1.0))) + ((var31) * (1.0))) + ((var74) * (0.6734184801267449))) + ((var50) * (1.0))) + ((var7) * (0.27930592947415606))) + ((var50) * (1.0))) + ((var77) * (0.0))) + ((var31) * (1.0))) + ((var50) * (1.0))) + ((var34) * (1.0))) + ((var78) * (0.17436154585141841))) + ((var19) * (1.0))) + ((var77) * (0.27962662458050547))) + ((var77) * (1.0))) + ((var76) * (0.0))) + ((var76) * (0.06811653887625635))) + ((var79) * (0.0))) + ((var80) * (0.17294251757378903))) + ((var79) * (0.1739997086949062))) + ((var34) * (1.0))) + ((var50) * (0.9990719391172115))) + ((var5) * (0.0))) + ((var80) * (1.0))) + ((var81) * (0.4999999999999998))) + ((var81) * (0.6692144111249669))) + ((var5) * (0.49999999999999767))) + ((var82) * (1.0))) + ((var82) * (1.0))) + ((var70) * (0.27951868786808015))) + ((var83) * (0.06987536782559217))) + ((var82) * (0.9463382911619757))) + ((var5) * (1.0))) + ((var80) * (1.0))) + ((var5) * (1.0))) + ((var80) * (1.0))) + ((var34) * (1.0))) + ((var31) * (0.9785645200096466))) + ((var5) * (0.6744872565300297))) + ((var80) * (1.0))}, 6 * sizeof(double));
+}
