@@ -1,6 +1,6 @@
 #include <Arduino_APDS9960.h>
 #include <EloquentTinyML.h>      // https://github.com/eloquentarduino/EloquentTinyML
-#include "randomForest_model_paper.h"            // RF model file
+#include "CART.h"            // RF model file
 
 //#define NUMBER_OF_LABELS   7     // number of voice labels
 #define NUMBER_OF_LABELS   3     // number of voice labels
@@ -10,6 +10,7 @@ const String words[NUMBER_OF_LABELS] = {"229658", "49b675", "6bd793"};  // words
 
 float feature_data[FEATURE_SIZE];
 
+Eloquent::ML::Port::DecisionTree model;
 void setup() {
 
   Serial.begin(9600);
@@ -33,13 +34,13 @@ void loop() {
   // read the color and proximity data
   APDS.readColor(r, g, b, c);
   p = APDS.readProximity();
-  feature_data[0] = (double) r;
-  feature_data[1] = (double) g;
-  feature_data[2] = (double) b;
-  feature_data[3] = (double) c;
-  feature_data[4] = (double) p;
+  feature_data[0] = (float) r;
+  feature_data[1] = (float) g;
+  feature_data[2] = (float) b;
+  feature_data[3] = (float) c;
+  feature_data[4] = (float) p;
   
-  double prediction = score(feature_data);
+  int prediction = model.predict(feature_data);
 
   // print the data in CSV format
   Serial.print('[');
