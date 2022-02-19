@@ -1,6 +1,6 @@
 #include <Arduino_APDS9960.h>
 #include <EloquentTinyML.h>      // https://github.com/eloquentarduino/EloquentTinyML
-#include "SVC.h"            // model file
+#include "RF.h"            // model file
 //#define NUMBER_OF_LABELS   7     // number of voice labels
 #define NUMBER_OF_LABELS   3     // number of voice labels
 //const String words[NUMBER_OF_LABELS] = {"229658", "30a161", "3dab6b", "49b675", "55c17f", "60cc89", "6bd793"};  // words for each label
@@ -9,7 +9,7 @@ const String words[NUMBER_OF_LABELS] = {"229658", "49b675", "6bd793"};  // words
 
 float feature_data[FEATURE_SIZE];
 
-Eloquent::ML::Port::SVM model;
+Eloquent::ML::Port::RandomForest model;
 
 void setup() {
 
