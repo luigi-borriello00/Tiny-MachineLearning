@@ -4,6 +4,7 @@
 
 #include <math.h>
 #include <PDM.h>
+#include "MemoryFree.h"
 #include <EloquentTinyML.h>      // https://github.com/eloquentarduino/EloquentTinyML
 #include "rf_model_s3.h"            // RF model file
 
@@ -13,7 +14,7 @@
 
 #define SAMPLE_THRESHOLD   200   // RMS threshold to trigger sampling
 #define FEATURE_SIZE       32    // sampling size of one voice instance
-#define SAMPLE_DELAY       20    // delay time (ms) between sampling
+#define SAMPLE_DELAY       20     // delay time (ms) between sampling
 
 //#define NUMBER_OF_LABELS   6     // number of voice labels
 //const String words[NUMBER_OF_LABELS] = {"500", "1000", "1500", "2000", "2500", "3000"};  // words for each label
@@ -31,6 +32,15 @@ volatile float rms;
 bool voice_detected;
 
 
+// free RAM check for debugging. SRAM for ATmega328p = 2048Kb.
+int availableMemory() {
+    // Use 1024 with ATmega168
+    int size = 32000;
+    byte *buf;
+    while ((buf = (byte *) malloc(--size)) == NULL);
+        free(buf);
+    return size;
+}
 // callback function for PDM mic
 void onPDMdata() {
 
@@ -46,10 +56,9 @@ void onPDMdata() {
 }
 
 void setup() {
-
+  
   Serial.begin(115200);
   while (!Serial);
-
   PDM.onReceive(onPDMdata);
   PDM.setBufferSize(PDM_BUFFER_SIZE);
   PDM.setGain(PDM_SOUND_GAIN);
@@ -75,6 +84,8 @@ void loop() {
   // waiting until sampling triggered
   while (rms < SAMPLE_THRESHOLD);
 
+  Serial.print("\n Memory: ");
+  Serial.println(availableMemory());
   digitalWrite(LED_BUILTIN, HIGH);
   for (int i = 0; i < FEATURE_SIZE; i++) {  // sampling
     while (rms < 0);

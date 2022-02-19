@@ -1,0 +1,6 @@
+﻿Algoritmo,MemOccupata,InfTime
+RandomForest,11,
+LogRegression,9,
+DecTree,9,
+SVC,12,
+GaussianNB,9,
