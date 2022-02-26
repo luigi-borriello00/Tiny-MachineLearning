@@ -1,6 +1,6 @@
-﻿Algoritmo,MemOccupata,InfTime
-RandomForest,118112,
-LogRegression,94496,
-DecTree,94240,
+﻿Algoritmo,MemOccupata,
+RF,118112,
+CART,94240,
+LR,94496,
 SVC,119640,
-GaussianNB,95232,
+GNB,95232,
