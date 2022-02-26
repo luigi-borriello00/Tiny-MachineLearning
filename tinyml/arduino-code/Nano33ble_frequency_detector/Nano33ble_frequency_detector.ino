@@ -6,7 +6,7 @@
 #include <PDM.h>
 #include "MemoryFree.h"
 #include <EloquentTinyML.h>      // https://github.com/eloquentarduino/EloquentTinyML
-#include "rf_model_s3.h"            // RF model file
+#include "s/RF.h"            // RF model file
 
 
 #define PDM_SOUND_GAIN     255   // sound gain of PDM mic
@@ -26,7 +26,7 @@
 #define TENSOR_ARENA_SIZE  4 * 1024
 
 
-Eloquent::ML::Port::RandomForest rf_model;
+Eloquent::ML::Port::RandomForest model;
 float feature_data[FEATURE_SIZE];
 volatile float rms;
 bool voice_detected;
