@@ -4,7 +4,6 @@
 
 #include <math.h>
 #include <PDM.h>
-#include "MemoryFree.h"
 #include <EloquentTinyML.h>      // https://github.com/eloquentarduino/EloquentTinyML
 #include "s/RF.h"            // RF model file
 
@@ -31,16 +30,6 @@ float feature_data[FEATURE_SIZE];
 volatile float rms;
 bool voice_detected;
 
-
-// free RAM check for debugging. SRAM for ATmega328p = 2048Kb.
-int availableMemory() {
-    // Use 1024 with ATmega168
-    int size = 256;
-    byte *buf;
-    while ((buf = (byte *) malloc(--size)) == NULL);
-        free(buf);
-    return size;
-}
 // callback function for PDM mic
 void onPDMdata() {
 
@@ -84,8 +73,6 @@ void loop() {
   // waiting until sampling triggered
   while (rms < SAMPLE_THRESHOLD);
 
-  Serial.print("\n Memory: ");
-  Serial.println(availableMemory());
   digitalWrite(LED_BUILTIN, HIGH);
   for (int i = 0; i < FEATURE_SIZE; i++) {  // sampling
     while (rms < 0);
@@ -109,10 +96,8 @@ void loop() {
   // print out prediction results;
   // in theory, you need to find the highest probability in the array,
   // but only one of them would be high enough over 0.5~0.6
-  //Serial.print("Predicting the Frequency: ");
-  //Serial.println(words[prediction]);
-  Serial.print(" == > Pred: ");
-  Serial.print(prediction);
+  Serial.print("Predicting the Frequency: ");
+  Serial.println(words[prediction]);
   Serial.println("],");
 
   // wait for 1 second after one sampling/prediction
