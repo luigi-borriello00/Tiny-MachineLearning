@@ -27,24 +27,12 @@ Provare:
 - Extra Tree
 
 
-Task 2:
-- Valutare occupazione di memoria -> MemoryUsage capire come si usa
-: Dectree:
-	Lo sketch usa 93384 byte (9%) dello spazio disponibile per i programmi.
-	Le variabili globali usano 45768 byte (17%) di memoria dinamica, lasciando altri 216376 byte liberi per le variabili locali. Il massimo è 262144 byte.
-: RF:
-	Lo sketch usa 117256 byte (11%) dello spazio disponibile per i programmi. Il massimo è 983040 byte.
-	Le variabili globali usano 45768 byte (17%) di memoria dinamica, lasciando altri 216376 byte liberi per le variabili locali. Il massimo è 262144 byte.
-: SVC:
-	12%
-	17%
-: GNB:
-	9%
-	17%
-: LR:
-	9%
-	17%
+Task: 
 
+- Aggiungere nella comparazione dei modelli il test su tutto il set
+- Aumentare di 50 elementi i training set
+- Implementare rete neurale 8-16-32 epoche
+- Testare quest'ultima
 
 
 
