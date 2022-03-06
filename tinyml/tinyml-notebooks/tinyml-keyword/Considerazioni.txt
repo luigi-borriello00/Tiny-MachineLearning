@@ -16,8 +16,13 @@ RF - 0,63 0,06
 
 - Testando i modelli con 2 etichette(no e yes) otteniamo un miglioramento notevole in quasi tutti i modelli, i quali diventano "utilizzabili"
 
-GNB - 0,80 0,11
-LR - 0,81 0,14
-CART - 0,76 0,07
-SVC - 0,81 0,09
-RF - 0,80 0,09
+GNB - 0,46 0,13
+LR - 0,69 0,14
+CART - 0,74 0,11
+SVC - 0,84 0,05
+RF - 0,86 0,06
+
+
+
+
+- Aumentando i campioni di 50 per ogni label, la precisione non aumenta, anzi va a peggiorare
