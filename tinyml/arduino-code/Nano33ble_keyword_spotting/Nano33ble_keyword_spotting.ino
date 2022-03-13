@@ -5,7 +5,7 @@
 #include <math.h>
 #include <PDM.h>
 #include <EloquentTinyML.h>      // https://github.com/eloquentarduino/EloquentTinyML
-#include "5/RF2.h"            // RF model file
+#include "NNmodel.h"            // RF model file
 
 
 #define PDM_SOUND_GAIN     255   // sound gain of PDM mic
@@ -13,19 +13,21 @@
 
 #define SAMPLE_THRESHOLD   200   // RMS threshold to trigger sampling
 #define FEATURE_SIZE       32    // sampling size of one voice instance
-#define SAMPLE_DELAY       20     // delay time (ms) between sampling
-
-//#define NUMBER_OF_LABELS   6     // number of voice labels
+#define SAMPLE_DELAY       20     // delay time (ms) between sampling 
 
 #define NUMBER_OF_LABELS    5     // number of voice labels
 const String words[NUMBER_OF_LABELS] = {"NO", "YES", "OK", "START", "STOP"};  // words for each label
 
+#define PREDIC_THRESHOLD   0.6   // prediction probability threshold for labels
+#define RAW_OUTPUT         true  // output prediction probability of each label
 #define NUMBER_OF_INPUTS   FEATURE_SIZE
 #define NUMBER_OF_OUTPUTS  NUMBER_OF_LABELS
 #define TENSOR_ARENA_SIZE  4 * 1024
 
 
-Eloquent::ML::Port::RandomForest model;
+
+//Eloquent::ML::Port::RandomForest model;
+Eloquent::TinyML::TfLite<NUMBER_OF_INPUTS, NUMBER_OF_OUTPUTS, TENSOR_ARENA_SIZE> model;
 float feature_data[FEATURE_SIZE];
 volatile float rms;
 bool voice_detected;
@@ -58,13 +60,15 @@ void setup() {
   }
 
   pinMode(LED_BUILTIN, OUTPUT);
-
+  float prediction[NUMBER_OF_LABELS];
+  tf_model.predict(feature_data, prediction);
   // wait 1 second to avoid initial PDM reading
   delay(900);
   digitalWrite(LED_BUILTIN, HIGH);
   delay(100);
   digitalWrite(LED_BUILTIN, LOW);
-  
+  // start TF Lite model
+  tf_model.begin((unsigned char*) model_data);
   Serial.println("=== Classifier start ===\n");
 }
 
