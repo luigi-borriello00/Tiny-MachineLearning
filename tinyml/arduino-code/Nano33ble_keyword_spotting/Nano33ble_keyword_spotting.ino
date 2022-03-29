@@ -7,7 +7,6 @@
 #include <EloquentTinyML.h>      // https://github.com/eloquentarduino/EloquentTinyML
 #include "NNmodel.h"            // RF model file
 
-
 #define PDM_SOUND_GAIN     255   // sound gain of PDM mic
 #define PDM_BUFFER_SIZE    256   // buffer size of PDM mic
 
@@ -61,14 +60,14 @@ void setup() {
 
   pinMode(LED_BUILTIN, OUTPUT);
   float prediction[NUMBER_OF_LABELS];
-  tf_model.predict(feature_data, prediction);
+  model.predict(feature_data, prediction);
   // wait 1 second to avoid initial PDM reading
   delay(900);
   digitalWrite(LED_BUILTIN, HIGH);
   delay(100);
   digitalWrite(LED_BUILTIN, LOW);
   // start TF Lite model
-  tf_model.begin((unsigned char*) model_data);
+  model.begin((unsigned char*) model_data);
   Serial.println("=== Classifier start ===\n");
 }
 

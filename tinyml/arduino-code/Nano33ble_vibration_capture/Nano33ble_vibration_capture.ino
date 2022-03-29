@@ -26,8 +26,8 @@ void loop() {
   }
   
   // wait for 1 second after one sampling/prediction
-  delay(25);
+  delay(700);
   digitalWrite(LED_BUILTIN, HIGH);
-  delay(25);
+  delay(700);
   digitalWrite(LED_BUILTIN, LOW);
 }
