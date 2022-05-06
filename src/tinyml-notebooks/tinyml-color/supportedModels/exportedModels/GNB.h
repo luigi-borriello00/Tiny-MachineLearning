@@ -9,26 +9,23 @@ namespace Eloquent {
                     * Predict class for features vector
                     */
                     int predict(float *x) {
-                        float votes[4] = { 0.0f };
+                        float votes[3] = { 0.0f };
                         float theta[5] = { 0 };
                         float sigma[5] = { 0 };
-                        theta[0] = 0.449578059072; theta[1] = 0.562037037037; theta[2] = 1.729166666667; theta[3] = -0.247422898183; theta[4] = 116.858333333333;
-                        sigma[0] = 0.262384290141; sigma[1] = 5.813546017211; sigma[2] = 55.095509966114; sigma[3] = 0.232364276188; sigma[4] = 174875.155041216;
-                        votes[0] = 0.3 - gauss(x, theta, sigma);
-                        theta[0] = -0.041139240506; theta[1] = -2.065277777778; theta[2] = -21.175; theta[3] = -0.897005703422; theta[4] = 0.0;
-                        sigma[0] = 0.00250811289; sigma[1] = 7.840139595744; sigma[2] = 389.538235660558; sigma[3] = 0.102676909077; sigma[4] = 0.000110660558;
-                        votes[1] = 0.2 - gauss(x, theta, sigma);
-                        theta[0] = 0.605221518987; theta[1] = -0.061805555556; theta[2] = 0.4125; theta[3] = -0.131820342205; theta[4] = 0.0;
-                        sigma[0] = 0.232643883399; sigma[1] = 0.076614807935; sigma[2] = 1.101829410558; sigma[3] = 0.117188327353; sigma[4] = 0.000110660558;
-                        votes[2] = 0.4 - gauss(x, theta, sigma);
-                        theta[0] = 0.496835443038; theta[1] = -0.136111111111; theta[2] = 0.6375; theta[3] = -0.313212927757; theta[4] = 0.0;
-                        sigma[0] = 0.250509234505; sigma[1] = 0.323868376608; sigma[2] = 2.637454410558; sigma[3] = 0.220249996219; sigma[4] = 0.000110660558;
-                        votes[3] = 0.1 - gauss(x, theta, sigma);
+                        theta[0] = -4.301041666667; theta[1] = -0.091853932584; theta[2] = -0.708333333333; theta[3] = -3.642633928571; theta[4] = 87.64375;
+                        sigma[0] = 10.563806751237; sigma[1] = 0.049163935249; sigma[2] = 1.845810151121; sigma[3] = 13.492458380834; sigma[4] = 133716.84192849594;
+                        votes[0] = 0.333333333333 - gauss(x, theta, sigma);
+                        theta[0] = -0.0203125; theta[1] = 0.138202247191; theta[2] = 0.350694444444; theta[3] = -0.062220982143; theta[4] = 0.0;
+                        sigma[0] = 1.906841419206; sigma[1] = 0.131314626449; sigma[2] = 1.712098249115; sigma[3] = 2.344865380072; sigma[4] = 9.2558529e-05;
+                        votes[1] = 0.333333333333 - gauss(x, theta, sigma);
+                        theta[0] = 1.380729166667; theta[1] = 0.652036516854; theta[2] = 1.149652777778; theta[3] = 1.390904017857; theta[4] = 0.0;
+                        sigma[0] = 1.655615290734; sigma[1] = 0.168331136163; sigma[2] = 2.993225154015; sigma[3] = 5.801583980598; sigma[4] = 9.2558529e-05;
+                        votes[2] = 0.333333333333 - gauss(x, theta, sigma);
                         // return argmax of votes
                         uint8_t classIdx = 0;
                         float maxVotes = votes[0];
 
-                        for (uint8_t i = 1; i < 4; i++) {
+                        for (uint8_t i = 1; i < 3; i++) {
                             if (votes[i] > maxVotes) {
                                 classIdx = i;
                                 maxVotes = votes[i];
