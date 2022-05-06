@@ -9,49 +9,19 @@ namespace Eloquent {
                     * Predict class for features vector
                     */
                     int predict(float *x) {
-                        if (x[11] <= -0.1770757958292961) {
-                            if (x[17] <= -0.5473398268222809) {
-                                if (x[31] <= -0.6712331175804138) {
-                                    return 1;
+                        if (x[16] <= 0.6817288994789124) {
+                            if (x[25] <= -0.17676687985658646) {
+                                if (x[26] <= -0.34103357791900635) {
+                                    return 0;
                                 }
 
                                 else {
-                                    if (x[16] <= -0.6092236638069153) {
-                                        return 3;
-                                    }
-
-                                    else {
-                                        if (x[1] <= -0.5422335565090179) {
-                                            if (x[15] <= -0.6009089946746826) {
-                                                if (x[24] <= -0.6073797345161438) {
-                                                    return 1;
-                                                }
-
-                                                else {
-                                                    return 3;
-                                                }
-                                            }
-
-                                            else {
-                                                return 1;
-                                            }
-                                        }
-
-                                        else {
-                                            return 3;
-                                        }
-                                    }
+                                    return 1;
                                 }
                             }
 
                             else {
-                                return 3;
-                            }
-                        }
-
-                        else {
-                            if (x[27] <= 0.4370714873075485) {
-                                if (x[19] <= 0.0) {
+                                if (x[28] <= 0.0) {
                                     return 2;
                                 }
 
@@ -59,26 +29,26 @@ namespace Eloquent {
                                     return 4;
                                 }
                             }
+                        }
+
+                        else {
+                            if (x[31] <= 0.584904134273529) {
+                                return 3;
+                            }
 
                             else {
-                                if (x[14] <= 0.6697314083576202) {
-                                    return 0;
-                                }
-
-                                else {
-                                    if (x[30] <= 0.7431061863899231) {
-                                        if (x[21] <= 0.7466512024402618) {
-                                            return 5;
-                                        }
-
-                                        else {
-                                            return 0;
-                                        }
+                                if (x[13] <= 0.8502108156681061) {
+                                    if (x[24] <= 0.8396785259246826) {
+                                        return 5;
                                     }
 
                                     else {
-                                        return 5;
+                                        return 3;
                                     }
+                                }
+
+                                else {
+                                    return 5;
                                 }
                             }
                         }
