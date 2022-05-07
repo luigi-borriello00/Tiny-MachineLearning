@@ -8,10 +8,10 @@
 #include "../functions.h"
 #include "testSet.h"
 
-#define NUMBER_OF_LABELS 3                                             // number of voice labels
+#define NUMBER_OF_LABELS 3                                            // number of voice labels
 const String words[NUMBER_OF_LABELS] = {"229658", "49b675", "6bd793"}; // words for each label
-#define FEATURE_SIZE 5
-#define TEST_SIZE 100
+#define FEATURE_SIZE 32
+#define TEST_SIZE 120
 
 int predicted_labels[TEST_SIZE];
 
@@ -71,11 +71,16 @@ void loop()
     Serial.print(", ");
   }
   Serial.println("]");
+  
   // evaluate accuracy, precision, recall, and f1 score
-  evaluate_accuracy(predicted_labels, testSet.y_test, TEST_SIZE);
-  evaluate_precision(predicted_labels, testSet.y_test, TEST_SIZE);
-  evaluate_recall(predicted_labels, testSet.y_test, TEST_SIZE);
-  evaluate_f1(predicted_labels, testSet.y_test, TEST_SIZE);
+  Serial.print("Accuracy: ");
+  Serial.println(evaluate_accuracy(predicted_labels, testSet.y_test, TEST_SIZE));
+  Serial.print("Precision: ");
+  Serial.println(evaluate_precision(predicted_labels, testSet.y_test, TEST_SIZE));
+  Serial.print("Recall: ");
+  Serial.println(evaluate_recall(predicted_labels, testSet.y_test, TEST_SIZE));
+  Serial.print("F1 score: ");
+  Serial.println(evaluate_f1(predicted_labels, testSet.y_test, TEST_SIZE));
   
 
   // wait for 1 second after one sampling/prediction

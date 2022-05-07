@@ -4,7 +4,7 @@
 #include <Arduino_APDS9960.h>
 #include <math.h>
 #include <EloquentTinyML.h>      // https://github.com/eloquentarduino/EloquentTinyML
-#include "NNmodel.h"       // TF Lite model file
+#include "models/NNmodel.h"       // TF Lite model file
 
 #define NUMBER_OF_LABELS   3     // number of voice labels
 const String words[NUMBER_OF_LABELS] = {"229658", "49b675", "6bd793"};  // words for each label

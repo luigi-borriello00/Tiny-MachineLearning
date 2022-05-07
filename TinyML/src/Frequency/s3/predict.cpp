@@ -5,7 +5,7 @@
 #include <math.h>
 #include <PDM.h>
 #include <EloquentTinyML.h>      // https://github.com/eloquentarduino/EloquentTinyML
-#include "NNmodel.h"       // TF Lite model file
+#include "models/NNmodel.h"       // TF Lite model file
 
 
 #define PDM_SOUND_GAIN     255   // sound gain of PDM mic

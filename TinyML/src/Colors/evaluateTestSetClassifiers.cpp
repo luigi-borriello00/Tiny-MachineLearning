@@ -12,7 +12,7 @@
 // const String words[NUMBER_OF_LABELS] = {"229658", "30a161", "3dab6b", "49b675", "55c17f", "60cc89", "6bd793"};  // words for each label
 const String words[NUMBER_OF_LABELS] = {"229658", "49b675", "6bd793"}; // words for each label
 #define FEATURE_SIZE 5
-#define TEST_SIZE 100
+#define TEST_SIZE 120
 
 /* Uncomment the model that yout want to test */
 Eloquent::ML::Port::RandomForest model;
@@ -28,7 +28,7 @@ void setup()
 {
     Serial.begin(9600);
     // print the header
-    Serial.println("Start evaluations");
+    Serial.println("Start Evaluate TestSet");
 }
 
 void loop()
@@ -48,9 +48,15 @@ void loop()
     Serial.print("Time to predict the X_test: ");
     long totTime = millis() - start;
     Serial.println(totTime);
-    evaluate_accuracy(prediction, testSet.y_test, TEST_SIZE);
-    evaluate_precision(prediction, testSet.y_test, TEST_SIZE);
-    evaluate_recall(prediction, testSet.y_test, TEST_SIZE);
-    evaluate_f1(prediction, testSet.y_test, TEST_SIZE);
+
+    // evaluate accuracy, precision, recall, and f1 score
+    Serial.print("Accuracy: ");
+    Serial.println(evaluate_accuracy(prediction, testSet.y_test, TEST_SIZE));
+    Serial.print("Precision: ");
+    Serial.println(evaluate_precision(prediction, testSet.y_test, TEST_SIZE));
+    Serial.print("Recall: ");
+    Serial.println(evaluate_recall(prediction, testSet.y_test, TEST_SIZE));
+    Serial.print("F1 score: ");
+    Serial.println(evaluate_f1(prediction, testSet.y_test, TEST_SIZE));
     delay(1000);
 }
