@@ -1,3 +1,4 @@
+#ifdef ciao
 #include <math.h>
 #include <PDM.h>
 
@@ -124,3 +125,4 @@ void loop() {
   digitalWrite(LED_BUILTIN, LOW);
   delay(500);
 }
+#endif
