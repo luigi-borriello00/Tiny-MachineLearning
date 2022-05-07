@@ -8,10 +8,10 @@
 #include "../../Functions.h"
 #include "TestSet.h"
 
-#define NUMBER_OF_LABELS 2                                           // number of voice labels
-const String words[NUMBER_OF_LABELS] = {"No", "Yes"};; // words for each label
-#define FEATURE_SIZE 32
-#define TEST_SIZE 60
+#define NUMBER_OF_LABELS 5                                                             // number of voice labels
+const String words[NUMBER_OF_LABELS] = {"1", "2", "3", "4", "5"}; // words for each label
+#define FEATURE_SIZE 60
+#define TEST_SIZE 780
 
 int predicted_labels[TEST_SIZE];
 
