@@ -1,3 +1,5 @@
+#ifdef EVAL_CLASS_FREQUENCIES_S
+
 #include <EloquentTinyML.h> // https://github.com/eloquentarduino/EloquentTinyML
 #include "../../Functions.h"
 #include "TestSet.h"
@@ -59,3 +61,5 @@ void loop()
 
     delay(1000);
 }
+
+#endif

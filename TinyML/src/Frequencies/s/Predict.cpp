@@ -1,7 +1,4 @@
-  /*
- * Voice classifier for Arduino Nano 33 BLE Sense by Alan Wang
- */
-
+#ifdef PREDICT_FREQUENCIES_S
 #include <math.h>
 #include <PDM.h>
 #include <EloquentTinyML.h>      // https://github.com/eloquentarduino/EloquentTinyML
@@ -121,3 +118,4 @@ void loop() {
   delay(100);
   digitalWrite(LED_BUILTIN, LOW);
 }
+#endif

@@ -1,4 +1,6 @@
-  /*
+#ifdef PREDICT_COLORS
+
+/*
  * Voice classifier for Arduino Nano 33 BLE Sense by Alan Wang
  */
 #include <Arduino_APDS9960.h>
@@ -87,3 +89,5 @@ void loop() {
   delay(100);
   digitalWrite(LED_BUILTIN, LOW);
 }
+
+#endif

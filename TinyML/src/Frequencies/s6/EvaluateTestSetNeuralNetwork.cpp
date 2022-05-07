@@ -1,6 +1,4 @@
-/*
- * Voice classifier for Arduino Nano 33 BLE Sense by Alan Wang
- */
+#ifdef EVAL_NN_FREQUENCIES_S6
 #include <Arduino_APDS9960.h>
 #include <math.h>
 #include <EloquentTinyML.h> // https://github.com/eloquentarduino/EloquentTinyML
@@ -89,3 +87,5 @@ void loop()
   delay(100);
   digitalWrite(LED_BUILTIN, LOW);
 }
+
+#endif

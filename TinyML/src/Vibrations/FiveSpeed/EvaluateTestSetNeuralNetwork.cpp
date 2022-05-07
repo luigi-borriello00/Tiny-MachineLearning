@@ -1,14 +1,12 @@
-/*
- * Voice classifier for Arduino Nano 33 BLE Sense by Alan Wang
- */
+#ifdef EVAL_NN_VIBRATIONS_FIVESPEED
 #include <Arduino_APDS9960.h>
 #include <math.h>
 #include <EloquentTinyML.h> // https://github.com/eloquentarduino/EloquentTinyML
-#include "Models/NNmodel.h"        // TF Lite model file
+#include "Models/NNmodel.h" // TF Lite model file
 #include "../../Functions.h"
 #include "TestSet.h"
 
-#define NUMBER_OF_LABELS 5                                                             // number of voice labels
+#define NUMBER_OF_LABELS 5                                        // number of voice labels
 const String words[NUMBER_OF_LABELS] = {"1", "2", "3", "4", "5"}; // words for each label
 #define FEATURE_SIZE 60
 #define TEST_SIZE 780
@@ -61,7 +59,7 @@ void loop()
       }
     }
     // add max_index to the array of predicted labels
-    predicted_labels[i] = (int) prediction[max_index];
+    predicted_labels[i] = (int)prediction[max_index];
   }
   // print out the predicted labels
   Serial.println("Predicted labels: \n [");
@@ -71,7 +69,7 @@ void loop()
     Serial.print(", ");
   }
   Serial.println("]");
-  
+
   // evaluate accuracy, precision, recall, and f1 score
   Serial.print("Accuracy: ");
   Serial.println(evaluate_accuracy(predicted_labels, testSet.y_test, TEST_SIZE));
@@ -81,7 +79,6 @@ void loop()
   Serial.println(evaluate_recall(predicted_labels, testSet.y_test, TEST_SIZE));
   Serial.print("F1 score: ");
   Serial.println(evaluate_f1(predicted_labels, testSet.y_test, TEST_SIZE));
-  
 
   // wait for 1 second after one sampling/prediction
   delay(900);
@@ -89,3 +86,5 @@ void loop()
   delay(100);
   digitalWrite(LED_BUILTIN, LOW);
 }
+
+#endif

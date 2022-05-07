@@ -1,3 +1,5 @@
+#ifdef EVAL_CLASS_COLORS
+
 #include <EloquentTinyML.h> // https://github.com/eloquentarduino/EloquentTinyML
 #include "../Functions.h"
 #include "TestSet.h"
@@ -60,3 +62,5 @@ void loop()
     Serial.println(evaluate_f1(prediction, testSet.y_test, TEST_SIZE));
     delay(1000);
 }
+
+#endif

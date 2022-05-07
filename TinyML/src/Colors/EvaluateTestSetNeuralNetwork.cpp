@@ -1,3 +1,5 @@
+#ifdef EVAL_NN_COLORS
+
 /*
  * Voice classifier for Arduino Nano 33 BLE Sense by Alan Wang
  */
@@ -89,3 +91,5 @@ void loop()
   delay(100);
   digitalWrite(LED_BUILTIN, LOW);
 }
+
+#endif

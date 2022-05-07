@@ -1,3 +1,4 @@
+#ifdef EVAL_CLASS_FREQUENCIES_S6
 #include <EloquentTinyML.h> // https://github.com/eloquentarduino/EloquentTinyML
 #include "../../Functions.h"
 #include "TestSet.h"
@@ -7,7 +8,7 @@
 //#include "Models/SVC.h"            // model file
 //#include "Models/LR.h"           // model file
 //#include "Models/GNB.h"            // model file
-#define NUMBER_OF_LABELS 11                                                              // number of voice labels
+#define NUMBER_OF_LABELS 11                                                                                                      // number of voice labels
 const String words[NUMBER_OF_LABELS] = {"2000", "2100", "2200", "2300", "2400", "2500", "2600", "2700", "2800", "2900", "3000"}; // words for each label
 #define FEATURE_SIZE 32
 #define TEST_SIZE 220
@@ -59,3 +60,5 @@ void loop()
 
     delay(1000);
 }
+
+#endif
