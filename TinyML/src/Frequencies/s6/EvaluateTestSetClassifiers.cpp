@@ -50,14 +50,15 @@ void loop()
 
     // evaluate accuracy, precision, recall, and f1 score
     Serial.print("Accuracy: ");
-    Serial.println(evaluate_accuracy(prediction, testSet.y_test, TEST_SIZE));
+    Serial.println(evaluate_accuracy(predicted_labels, testSet.y_test, TEST_SIZE));
+    /*
     Serial.print("Precision: ");
-    Serial.println(evaluate_precision(prediction, testSet.y_test, TEST_SIZE));
+    Serial.println(evaluate_precision(predicted_labels, testSet.y_test, TEST_SIZE));
     Serial.print("Recall: ");
-    Serial.println(evaluate_recall(prediction, testSet.y_test, TEST_SIZE));
+    Serial.println(evaluate_recall(predicted_labels, testSet.y_test, TEST_SIZE));
     Serial.print("F1 score: ");
-    Serial.println(evaluate_f1(prediction, testSet.y_test, TEST_SIZE));
-
+    Serial.println(evaluate_f1(predicted_labels, testSet.y_test, TEST_SIZE));
+    */
     delay(1000);
 }
 
