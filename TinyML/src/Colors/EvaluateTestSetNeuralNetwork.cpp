@@ -1,4 +1,4 @@
-#ifdef EVAL_NN_COLORS
+#ifdef EVAL_CLASS_COLORS
 
 #include <Arduino_APDS9960.h>
 #include <math.h>

@@ -1,4 +1,4 @@
-#ifdef EVAL_CLASS_COLORS
+#ifdef EVAL_NN_COLORS
 
 #include <EloquentTinyML.h> // https://github.com/eloquentarduino/EloquentTinyML
 #include "../Functions.h"
@@ -53,7 +53,7 @@ void loop()
 
     // evaluate accuracy, precision, recall, and f1 score
     Serial.print("Accuracy: ");
-    Serial.println(evaluate_accuracy(predicted_labels, testSet.y_test, TEST_SIZE));
+    Serial.println(evaluate_accuracy(prediction, testSet.y_test, TEST_SIZE));
     /*
     Serial.print("Precision: ");
     Serial.println(evaluate_precision(predicted_labels, testSet.y_test, TEST_SIZE));
