@@ -29,6 +29,8 @@ void setup()
   Serial.begin(9600);
   // print the header
   Serial.println("Start Evaluate TestSet");
+  // start TF Lite model
+  tf_model.begin((unsigned char *)model_data);
 }
 
 void loop()
@@ -36,11 +38,10 @@ void loop()
   // for each element in X_test
   for (int i = 0; i < TEST_SIZE; i++)
   {
-    feature_data[0] = testSet.X_test[i][0];
-    feature_data[1] = testSet.X_test[i][1];
-    feature_data[2] = testSet.X_test[i][2];
-    feature_data[3] = testSet.X_test[i][3];
-    feature_data[4] = testSet.X_test[i][4];
+    for(int j = 0; j < FEATURE_SIZE; j++)
+    {
+      feature_data[j] = testSet.X_test[i][j];
+    }
     // predict color and put results (probability) for each label in the array
     float prediction[NUMBER_OF_LABELS];
     tf_model.predict(feature_data, prediction);

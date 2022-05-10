@@ -1,5 +1,4 @@
-#ifdef EVAL_NN_KEYWORDS_2WORDS
-#include <Arduino_APDS9960.h>
+#ifdef EVAL_NN_KEYWORD_2WORDS
 #include <math.h>
 #include <EloquentTinyML.h> // https://github.com/eloquentarduino/EloquentTinyML
 #include "Models/NNmodel.h" // TF Lite model file
@@ -8,7 +7,6 @@
 
 #define NUMBER_OF_LABELS 2 // number of voice labels
 const String words[NUMBER_OF_LABELS] = {"No", "Yes"};
-; // words for each label
 #define FEATURE_SIZE 32
 #define TEST_SIZE 60
 
@@ -28,19 +26,22 @@ void setup()
 {
   Serial.begin(9600);
   // print the header
+  // start TF Lite model
+  tf_model.begin((unsigned char *)model_data);
   Serial.println("Start Evaluate TestSet");
 }
 
 void loop()
 {
+  
   // for each element in X_test
   for (int i = 0; i < TEST_SIZE; i++)
   {
-    feature_data[0] = testSet.X_test[i][0];
-    feature_data[1] = testSet.X_test[i][1];
-    feature_data[2] = testSet.X_test[i][2];
-    feature_data[3] = testSet.X_test[i][3];
-    feature_data[4] = testSet.X_test[i][4];
+    for(int j = 0; j < FEATURE_SIZE; j++)
+    {
+      feature_data[j] = testSet.X_test[i][j];
+    }
+
     // predict color and put results (probability) for each label in the array
     float prediction[NUMBER_OF_LABELS];
     tf_model.predict(feature_data, prediction);
@@ -51,7 +52,7 @@ void loop()
     // find index of max value in prediction array
     int max_index = 0;
     float max_value = prediction[0];
-    for (int j = 1; j < NUMBER_OF_LABELS; j++)
+    for (int j = 0; j < NUMBER_OF_LABELS; j++)
     {
       if (prediction[j] > max_value)
       {
@@ -60,7 +61,7 @@ void loop()
       }
     }
     // add max_index to the array of predicted labels
-    predicted_labels[i] = (int)prediction[max_index];
+    predicted_labels[i] = max_index;
   }
   // print out the predicted labels
   Serial.println("Predicted labels: \n [");
