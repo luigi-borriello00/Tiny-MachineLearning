@@ -47,18 +47,15 @@ void loop()
     Serial.print("Time to predict the X_test: ");
     long totTime = millis() - start;
     Serial.println(totTime);
+    // print out the predicted labels
+    Serial.println("Predicted labels: \n [");
+    for (int i = 0; i < TEST_SIZE; i++)
+    {
+        Serial.print(predicted_labels[i]);
+        Serial.print(", ");
+    }
+    Serial.println("]");
 
-    // evaluate accuracy, precision, recall, and f1 score
-    Serial.print("Accuracy: ");
-    Serial.println(evaluate_accuracy(predicted_labels, testSet.y_test, TEST_SIZE));
-    /*
-    Serial.print("Precision: ");
-    Serial.println(evaluate_precision(predicted_labels, testSet.y_test, TEST_SIZE));
-    Serial.print("Recall: ");
-    Serial.println(evaluate_recall(predicted_labels, testSet.y_test, TEST_SIZE));
-    Serial.print("F1 score: ");
-    Serial.println(evaluate_f1(predicted_labels, testSet.y_test, TEST_SIZE));
-    */
     delay(1000);
 }
 #endif

@@ -4,7 +4,6 @@
 #include <math.h>
 #include <EloquentTinyML.h> // https://github.com/eloquentarduino/EloquentTinyML
 #include "Models/NNmodel.h"        // TF Lite model file
-#include "../Functions.h"
 #include "TestSet.h"
 
 #define NUMBER_OF_LABELS 3                                            // number of voice labels
@@ -71,18 +70,6 @@ void loop()
   }
   Serial.println("]");
   
-  // evaluate accuracy, precision, recall, and f1 score
-  Serial.print("Accuracy: ");
-  Serial.println(evaluate_accuracy(predicted_labels, testSet.y_test, TEST_SIZE));
-  /*
-  Serial.print("Precision: ");
-  Serial.println(evaluate_precision(predicted_labels, testSet.y_test, TEST_SIZE));
-  Serial.print("Recall: ");
-  Serial.println(evaluate_recall(predicted_labels, testSet.y_test, TEST_SIZE));
-  Serial.print("F1 score: ");
-  Serial.println(evaluate_f1(predicted_labels, testSet.y_test, TEST_SIZE));
-  */
-
   // wait for 1 second after one sampling/prediction
   delay(900);
   digitalWrite(LED_BUILTIN, HIGH);
