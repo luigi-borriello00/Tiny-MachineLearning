@@ -1,4 +1,4 @@
-#ifdef EVAL_NN_COLORS
+#ifdef EVAL_CLASS_COLORS
 
 #include <EloquentTinyML.h> // https://github.com/eloquentarduino/EloquentTinyML
 #include "TestSet.h"
@@ -43,6 +43,12 @@ void loop()
         for (int j = 0; j < FEATURE_SIZE; j++)
         {
             X_temp[j] = testSet.X_test[i][j];
+        }
+        // print X_temp
+        for (int j = 0; j < FEATURE_SIZE; j++)
+        {
+            Serial.print(X_temp[j]);
+            Serial.print(" ");
         }
         predicted_labels[i] = model.predict(X_temp);
     }
