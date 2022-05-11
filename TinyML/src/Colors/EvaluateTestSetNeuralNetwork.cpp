@@ -8,7 +8,7 @@
 
 #define NUMBER_OF_LABELS 3                                            // number of voice labels
 const String words[NUMBER_OF_LABELS] = {"229658", "49b675", "6bd793"}; // words for each label
-#define FEATURE_SIZE 32
+#define FEATURE_SIZE 5
 #define TEST_SIZE 120
 
 int predicted_labels[TEST_SIZE];
