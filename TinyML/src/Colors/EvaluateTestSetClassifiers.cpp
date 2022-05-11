@@ -3,7 +3,8 @@
 #include <EloquentTinyML.h> // https://github.com/eloquentarduino/EloquentTinyML
 #include "TestSet.h"
 /* Uncomment the model that yout want to test */
-#include "Models/RF.h" // model file
+//#include "Models/RF.h" // model file
+#include "Models/rf_model_paper_3.h" // model file
 //#include "Models/CART.h"            // model file
 //#include "Models/SVC.h"            // model file
 //#include "Models/LR.h"           // model file
@@ -44,12 +45,7 @@ void loop()
         {
             X_temp[j] = testSet.X_test[i][j];
         }
-        // print X_temp
-        for (int j = 0; j < FEATURE_SIZE; j++)
-        {
-            Serial.print(X_temp[j]);
-            Serial.print(" ");
-        }
+        // predict the label
         predicted_labels[i] = model.predict(X_temp);
     }
     Serial.print("Time to predict the X_test: ");
@@ -65,7 +61,7 @@ void loop()
     }
     Serial.println("]");
 
-    delay(1000);
+    delay(10000);
 }
 
 #endif

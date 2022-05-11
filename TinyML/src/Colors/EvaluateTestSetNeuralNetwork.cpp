@@ -39,7 +39,7 @@ void loop()
   {
     for(int j = 0; j < FEATURE_SIZE; j++)
     {
-      feature_data[j] = testSet.X_test[i][j];
+      feature_data[j] =  0 ;//  testSet.X_test[i][j];
     }
     // predict color and put results (probability) for each label in the array
     float prediction[NUMBER_OF_LABELS];
