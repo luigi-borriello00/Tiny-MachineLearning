@@ -39,7 +39,7 @@ void loop()
   {
     for(int j = 0; j < FEATURE_SIZE; j++)
     {
-      feature_data[j] =  0 ;//  testSet.X_test[i][j];
+      feature_data[j] = testSet.X_test[i][j];
     }
     // predict color and put results (probability) for each label in the array
     float prediction[NUMBER_OF_LABELS];
@@ -47,15 +47,13 @@ void loop()
     // print out prediction results;
     // in theory, you need to find the highest probability in the array,
     // but only one of them would be high enough over 0.5~0.6
-    Serial.println("Predicting the word:");
+    
     // find index of max value in prediction array
-    int max_index = 0;
     float max_value = prediction[0];
     for (int j = 1; j < NUMBER_OF_LABELS; j++)
     {
       if (prediction[j] > max_value)
       {
-        max_index = j;
         max_value = prediction[j];
       }
     }
