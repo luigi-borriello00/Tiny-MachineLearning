@@ -60,7 +60,7 @@ void loop()
       }
     }
     // add max_index to the array of predicted labels
-    predicted_labels[i] = (int) prediction[max_index];
+    predicted_labels[i] = (int) max_value;
   }
   // print out the predicted labels
   Serial.println("Predicted labels: \n [");

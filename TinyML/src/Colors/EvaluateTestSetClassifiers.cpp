@@ -23,7 +23,7 @@ Eloquent::ML::Port::RandomForest model;
 // Eloquent::ML::Port::GaussianNB model;
 
 TestSet testSet;
-int prediction[TEST_SIZE];
+int predicted_labels[TEST_SIZE];
 
 void setup()
 {
@@ -44,7 +44,7 @@ void loop()
         {
             X_temp[j] = testSet.X_test[i][j];
         }
-        prediction[i] = model.predict(X_temp);
+        predicted_labels[i] = model.predict(X_temp);
     }
     Serial.print("Time to predict the X_test: ");
     long totTime = millis() - start;
