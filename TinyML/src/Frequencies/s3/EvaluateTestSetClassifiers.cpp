@@ -3,22 +3,22 @@
 #include "../../Functions.h"
 #include "TestSet.h"
 /* Uncomment the model that yout want to test */
-#include "Models/RF.h" // model file
+//#include "Models/RF.h" // model file
 //#include "Models/CART.h"            // model file
-//#include "Models/SVC.h"            // model file
 //#include "Models/LR.h"           // model file
-//#include "Models/GNB.h"            // model file
+//#include "Models/SVC.h"            // model file
+#include "Models/GNB.h"            // model file
 #define NUMBER_OF_LABELS 6                                                               // number of voice labels
 const String words[NUMBER_OF_LABELS] = {"2000", "2200", "2400", "2600", "2800", "3000"}; // words for each label
 #define FEATURE_SIZE 32
 #define TEST_SIZE 120
 
 /* Uncomment the model that yout want to test */
-Eloquent::ML::Port::RandomForest model;
+// Eloquent::ML::Port::RandomForest model;
 // Eloquent::ML::Port::DecisionTree model;
 // Eloquent::ML::Port::LogisticRegression model;
 // Eloquent::ML::Port::SVM model;
-// Eloquent::ML::Port::GaussianNB model;
+ Eloquent::ML::Port::GaussianNB model;
 
 TestSet testSet;
 int prediction[TEST_SIZE];
@@ -51,7 +51,7 @@ void loop()
     Serial.println("Predicted labels: \n [");
     for (int i = 0; i < TEST_SIZE; i++)
     {
-        Serial.print(predicted_labels[i]);
+        Serial.print(prediction[i]);
         Serial.print(", ");
     }
     Serial.println("]");

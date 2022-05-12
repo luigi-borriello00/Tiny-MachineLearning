@@ -50,15 +50,17 @@ void loop()
     
     // find index of max value in prediction array
     float max_value = prediction[0];
+    int max_index = 0;
     for (int j = 1; j < NUMBER_OF_LABELS; j++)
     {
       if (prediction[j] > max_value)
       {
         max_value = prediction[j];
+        max_index = j;
       }
     }
     // add max_index to the array of predicted labels
-    predicted_labels[i] = (int) max_value;
+    predicted_labels[i] = max_index;
   }
   // print out the predicted labels
   Serial.println("Predicted labels: \n [");

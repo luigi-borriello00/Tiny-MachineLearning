@@ -1,4 +1,4 @@
-# ifdef EVAL_NN_FREQUENCIES_S
+#ifdef EVAL_NN_FREQUENCIES_S
 
 #include <Arduino_APDS9960.h>
 #include <math.h>
@@ -6,8 +6,8 @@
 #include "Models/NNmodel.h"        // TF Lite model file
 #include "TestSet.h"
 
-#define NUMBER_OF_LABELS 6                                           // number of voice labels
-const String words[NUMBER_OF_LABELS] = {"500", "1000", "1500", "2000", "2500", "3000"};; // words for each label
+#define NUMBER_OF_LABELS 6                                            // number of voice labels
+const String words[NUMBER_OF_LABELS] = {"500", "1000", "1500", "2000", "2500", "3000"}; // words for each label
 #define FEATURE_SIZE 32
 #define TEST_SIZE 120
 
@@ -50,15 +50,17 @@ void loop()
     
     // find index of max value in prediction array
     float max_value = prediction[0];
+    int max_index = 0;
     for (int j = 1; j < NUMBER_OF_LABELS; j++)
     {
       if (prediction[j] > max_value)
       {
         max_value = prediction[j];
+        max_index = j;
       }
     }
     // add max_index to the array of predicted labels
-    predicted_labels[i] = (int) max_value;
+    predicted_labels[i] = max_index;
   }
   // print out the predicted labels
   Serial.println("Predicted labels: \n [");
