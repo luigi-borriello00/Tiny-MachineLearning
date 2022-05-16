@@ -17,7 +17,7 @@ int predicted_labels[TEST_SIZE];
 #define RAW_OUTPUT true      // output prediction probability of each label
 #define NUMBER_OF_INPUTS FEATURE_SIZE
 #define NUMBER_OF_OUTPUTS NUMBER_OF_LABELS
-#define TENSOR_ARENA_SIZE 4 * 1024
+#define TENSOR_ARENA_SIZE 10 * 1024
 
 Eloquent::TinyML::TfLite<NUMBER_OF_INPUTS, NUMBER_OF_OUTPUTS, TENSOR_ARENA_SIZE> tf_model;
 float feature_data[FEATURE_SIZE];
