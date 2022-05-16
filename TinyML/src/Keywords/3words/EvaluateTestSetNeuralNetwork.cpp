@@ -1,4 +1,4 @@
-#ifdef EVAL_NN_KEYWORDS_2WORDS
+#ifdef EVAL_NN_KEYWORDS_3WORDS
 #include <math.h>
 #include <EloquentTinyML.h> // https://github.com/eloquentarduino/EloquentTinyML
 #include "Models/NNmodel.h" // TF Lite model file
@@ -48,6 +48,7 @@ void loop()
     // print out prediction results;
     // in theory, you need to find the highest probability in the array,
     // but only one of them would be high enough over 0.5~0.6
+    Serial.println("Predicting the word:");
     // find index of max value in prediction array
     int max_index = 0;
     float max_value = prediction[0];
@@ -60,7 +61,7 @@ void loop()
       }
     }
     // add max_index to the array of predicted labels
-    predicted_labels[i] = max_index;
+    predicted_labels[i] = (int)max_value;
   }
   // print out the predicted labels
   Serial.println("Predicted labels: \n [");
