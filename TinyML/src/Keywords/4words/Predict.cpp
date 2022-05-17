@@ -11,7 +11,7 @@
 #define FEATURE_SIZE 32      // sampling size of one voice instance
 #define SAMPLE_DELAY 20      // delay time (ms) between sampling
 
-#define NUMBER_OF_LABELS 3                            // number of voice labels
+#define NUMBER_OF_LABELS 4                            // number of voice labels
 const String words[NUMBER_OF_LABELS] = {"No", "Yes", "Ok", "Start"};//, "Stop"};  // words for each label
 
 #define PREDIC_THRESHOLD 0.6 // prediction probability threshold for labels
