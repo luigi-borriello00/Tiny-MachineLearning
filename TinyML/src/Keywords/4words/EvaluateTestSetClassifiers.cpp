@@ -8,16 +8,16 @@
 //#include "Models/SVC.h"            // model file
 //#include "Models/LR.h"           // model file
 //#include "Models/GNB.h"            // model file
-#define NUMBER_OF_LABELS 2                            // number of voice labels
-const String words[NUMBER_OF_LABELS] = {"No", "Yes"}; // words for each label
+#define NUMBER_OF_LABELS 4                            // number of voice labels
+const String words[NUMBER_OF_LABELS] = {"No", "Yes", "Ok", "Start"}; // words for each label
 #define FEATURE_SIZE 32
-#define TEST_SIZE 60
+#define TEST_SIZE 120
 
 /* Uncomment the model that yout want to test */
-//Eloquent::ML::Port::RandomForest model;
+// Eloquent::ML::Port::RandomForest model;
  Eloquent::ML::Port::DecisionTree model;
-// Eloquent::ML::Port::LogisticRegression model;
 // Eloquent::ML::Port::SVM model;
+// Eloquent::ML::Port::LogisticRegression model;
 // Eloquent::ML::Port::GaussianNB model;
 
 TestSet testSet;
