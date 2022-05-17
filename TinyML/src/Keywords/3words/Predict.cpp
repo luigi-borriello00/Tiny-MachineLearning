@@ -12,7 +12,7 @@
 #define SAMPLE_DELAY 20      // delay time (ms) between sampling
 
 #define NUMBER_OF_LABELS 3                            // number of voice labels
-const String words[NUMBER_OF_LABELS] = {"No", "Yes"}; //"Ok", "Start", "Stop"};  // words for each label
+const String words[NUMBER_OF_LABELS] = {"No", "Yes", "Ok"}; //"Start", "Stop"};  // words for each label
 
 #define PREDIC_THRESHOLD 0.6 // prediction probability threshold for labels
 #define RAW_OUTPUT true      // output prediction probability of each label
