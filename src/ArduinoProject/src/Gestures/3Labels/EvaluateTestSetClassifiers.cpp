@@ -8,7 +8,6 @@
 //#include "Models/SVC.h"            // model file
 //#include "Models/LR.h"           // model file
 //#include "Models/GNB.h"            // model file
-//#define NUMBER_OF_LABELS   7     // number of voice labels
 #define NUMBER_OF_LABELS 3 // number of voice labels
 const String words[NUMBER_OF_LABELS] = {"O", "I", "U"}; // words for each label
 #define FEATURE_SIZE 42
