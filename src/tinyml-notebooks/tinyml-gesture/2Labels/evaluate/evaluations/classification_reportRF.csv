@@ -1,0 +1,3 @@
+class,precision,recall,f1_score,accuracy
+no,0.83,0.83,0.83,   0.83
+yes,0.83,0.83,0.83,   0.83
