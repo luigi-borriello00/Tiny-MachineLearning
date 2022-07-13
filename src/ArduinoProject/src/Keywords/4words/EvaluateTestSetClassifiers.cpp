@@ -4,9 +4,9 @@
 #include "TestSet.h"
 /* Uncomment the model that yout want to test */
 //#include "Models/RF.h" // model file
-#include "Models/CART.h"            // model file
+//#include "Models/CART.h"            // model file
 //#include "Models/SVC.h"            // model file
-//#include "Models/LR.h"           // model file
+#include "Models/LR.h"           // model file
 //#include "Models/GNB.h"            // model file
 #define NUMBER_OF_LABELS 4                            // number of voice labels
 const String words[NUMBER_OF_LABELS] = {"No", "Yes", "Ok", "Start"}; // words for each label
@@ -15,9 +15,9 @@ const String words[NUMBER_OF_LABELS] = {"No", "Yes", "Ok", "Start"}; // words fo
 
 /* Uncomment the model that yout want to test */
 // Eloquent::ML::Port::RandomForest model;
- Eloquent::ML::Port::DecisionTree model;
+// Eloquent::ML::Port::DecisionTree model;
 // Eloquent::ML::Port::SVM model;
-// Eloquent::ML::Port::LogisticRegression model;
+ Eloquent::ML::Port::LogisticRegression model;
 // Eloquent::ML::Port::GaussianNB model;
 
 TestSet testSet;

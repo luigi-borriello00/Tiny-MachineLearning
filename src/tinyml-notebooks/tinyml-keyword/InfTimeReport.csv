@@ -1,7 +1,7 @@
-Algoritmo,Inf2,Inf3,inf4,inf5
-RF,,,,
-CART,,,,
-LR,,,,
-SVC,,,,
-GNB,93308,,,
-NN,,,,
+Algoritmo,inf2,inf3,inf4,inf5
+RF,13,27,44,266
+CART,1,1,1,1
+LR,1,6,10,16
+SVC,3320,6092,12642,19951
+GNB,14,31,54,87
+NN,117,180,883,590

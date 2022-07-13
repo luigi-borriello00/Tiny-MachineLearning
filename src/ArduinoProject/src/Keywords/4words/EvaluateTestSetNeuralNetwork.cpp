@@ -16,7 +16,7 @@ int predicted_labels[TEST_SIZE];
 #define RAW_OUTPUT true      // output prediction probability of each label
 #define NUMBER_OF_INPUTS FEATURE_SIZE
 #define NUMBER_OF_OUTPUTS NUMBER_OF_LABELS
-#define TENSOR_ARENA_SIZE 4 * 1024
+#define TENSOR_ARENA_SIZE 10 * 1024
 
 Eloquent::TinyML::TfLite<NUMBER_OF_INPUTS, NUMBER_OF_OUTPUTS, TENSOR_ARENA_SIZE> tf_model;
 float feature_data[FEATURE_SIZE];
@@ -33,7 +33,7 @@ void setup()
 
 void loop()
 {
-  
+  long start = millis();
   // for each element in X_test
   for (int i = 0; i < TEST_SIZE; i++)
   {
@@ -62,6 +62,9 @@ void loop()
     // add max_index to the array of predicted labels
     predicted_labels[i] = max_index;
   }
+  Serial.print("Time to predict the X_test: ");
+  long totTime = millis() - start;
+  Serial.println(totTime);
   // print out the predicted labels
   Serial.println("Predicted labels: \n [");
   for (int i = 0; i < TEST_SIZE; i++)
