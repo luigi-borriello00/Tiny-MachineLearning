@@ -1,6 +1,7 @@
-﻿Algoritmo,InfTime,InfTimeS3,InfTimeS6,
-RF,4,3,23,
-CART,1,1,1,
-LR,4,4,14,
-SVC,1792,1918,7418,
-GNB,96,97,374,
+Algoritmo,InfTime,InfTimeS3,InfTimeS6
+RF,19,22,84
+CART,1,1,3
+LR,17,17,54
+SVC,3661,4191,99999
+GNB,88,88,287
+NN,559,482,992

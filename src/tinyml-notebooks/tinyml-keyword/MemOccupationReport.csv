@@ -1,6 +1,7 @@
-﻿Algoritmo,MemOccupata2,
-RF,109688,
-CART,90616,
-LR,91128,
-SVC,153328,
-GNB,92256,
+Algoritmo,Mem2,Mem3,Mem4,Mem5
+RF,,,,
+CART,,,,
+LR,,,,
+SVC,,,,
+GNB,93308,,,
+NN,,,,

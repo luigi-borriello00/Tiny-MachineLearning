@@ -6,8 +6,8 @@
 //#include "Models/RF.h" // model file
 //#include "Models/CART.h"            // model file
 //#include "Models/SVC.h"            // model file
-//#include "Models/LR.h"           // model file
-#include "Models/GNB.h"            // model file
+#include "Models/LR.h"           // model file
+//#include "Models/GNB.h"            // model file
 #define NUMBER_OF_LABELS 11                                                                                                      // number of voice labels
 const String words[NUMBER_OF_LABELS] = {"2000", "2100", "2200", "2300", "2400", "2500", "2600", "2700", "2800", "2900", "3000"}; // words for each label
 #define FEATURE_SIZE 32
@@ -17,8 +17,8 @@ const String words[NUMBER_OF_LABELS] = {"2000", "2100", "2200", "2300", "2400", 
 // Eloquent::ML::Port::RandomForest model;
 // Eloquent::ML::Port::DecisionTree model;
 // Eloquent::ML::Port::SVM model;
-// Eloquent::ML::Port::LogisticRegression model;
- Eloquent::ML::Port::GaussianNB model;
+ Eloquent::ML::Port::LogisticRegression model;
+// Eloquent::ML::Port::GaussianNB model;
 
 TestSet testSet;
 int prediction[TEST_SIZE];
