@@ -1,6 +1,6 @@
-﻿Algoritmo,InfTime,
-RF,77,
-CART,2,
-LR,21,
-SVC,0,
-GNB,607,
+Algoritmo,InfTime
+RF,635
+CART,17
+LR,160
+GNB,837
+NN,2939
