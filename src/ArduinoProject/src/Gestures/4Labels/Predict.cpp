@@ -5,7 +5,7 @@
 #include <EloquentTinyML.h>      // https://github.com/eloquentarduino/EloquentTinyML
 #include "Models/NNmodel.h"       // TF Lite model file
 
-#define NUMBER_OF_LABELS   3     // number of voice labels
+#define NUMBER_OF_LABELS   4     // number of voice labels
 const String words[NUMBER_OF_LABELS] = {"O", "I", "U", "E"}; // words for each label
 #define FEATURE_SIZE 5
 
