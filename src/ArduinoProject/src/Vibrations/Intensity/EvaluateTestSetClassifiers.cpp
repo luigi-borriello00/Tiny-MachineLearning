@@ -1,6 +1,5 @@
 #ifdef EVAL_CLASS_VIBRATIONS_FIVESPEED
 #include <EloquentTinyML.h> // https://github.com/eloquentarduino/EloquentTinyML
-#include "../../Functions.h"
 #include "TestSet.h"
 /* Uncomment the model that yout want to test */
 //#include "Models/RF.h" // model file

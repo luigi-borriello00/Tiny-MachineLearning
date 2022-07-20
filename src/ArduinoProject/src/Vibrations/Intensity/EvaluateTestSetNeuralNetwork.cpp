@@ -3,7 +3,6 @@
 #include <math.h>
 #include <EloquentTinyML.h> // https://github.com/eloquentarduino/EloquentTinyML
 #include "Models/NNmodel.h" // TF Lite model file
-#include "../../Functions.h"
 #include "TestSet.h"
 
 #define NUMBER_OF_LABELS 5                                        // number of voice labels

@@ -1,0 +1,6 @@
+class,precision,recall,f1_score,accuracy
+no,0.2,1.0,0.33,   0.20
+yes,0.0,0.0,0.0,   0.20
+ok,0.0,0.0,0.0,   0.20
+start,0.0,0.0,0.0,   0.20
+stop,0.0,0.0,0.0,   0.20

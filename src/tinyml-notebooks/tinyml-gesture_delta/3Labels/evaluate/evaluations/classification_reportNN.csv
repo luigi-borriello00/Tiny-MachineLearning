@@ -1,0 +1,4 @@
+class,precision,recall,f1_score,accuracy
+O,0.71,0.83,0.77,   0.83
+I,0.83,0.83,0.83,   0.83
+U,1.0,0.83,0.91,   0.83

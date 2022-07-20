@@ -1,15 +1,14 @@
 #ifdef EVAL_NN_VIBRATIONS_ALL
-#include <Arduino_APDS9960.h>
+
 #include <math.h>
 #include <EloquentTinyML.h> // https://github.com/eloquentarduino/EloquentTinyML
 #include "Models/NNmodel.h" // TF Lite model file
-#include "../../Functions.h"
 #include "TestSet.h"
 
 #define NUMBER_OF_LABELS 6                                                                                                    // number of voice labels
 const String words[NUMBER_OF_LABELS] = {"0", "1", "2", "3", "4", "5"};// words for each label
 #define FEATURE_SIZE 60
-#define TEST_SIZE 1666
+#define TEST_SIZE 833
 
 int predicted_labels[TEST_SIZE];
 

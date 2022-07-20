@@ -3,15 +3,12 @@
 #include <PDM.h>
 #include <EloquentTinyML.h> // https://github.com/eloquentarduino/EloquentTinyML
 #include "Models/NNmodel.h"        // TF Lite model file
+#include "TestSet.h"
 
-#define PDM_SOUND_GAIN 255  // sound gain of PDM mic
-#define PDM_BUFFER_SIZE 256 // buffer size of PDM mic
-
-#define SAMPLE_THRESHOLD 900 // RMS threshold to trigger sampling
 #define FEATURE_SIZE 60     // sampling size of one voice instance
 #define SAMPLE_DELAY 20      // delay time (ms) between sampling
 
-#define NUMBER_OF_LABELS 2                                                                                                  // number of voice labels
+#define NUMBER_OF_LABELS 6                                                                                                  // number of voice labels
 const String words[NUMBER_OF_LABELS] = {"0", "1", "2", "3", "4", "5"}; // words for each label
 
 #define PREDIC_THRESHOLD 0.6 // prediction probability threshold for labels
@@ -29,16 +26,7 @@ bool voice_detected;
 void onPDMdata()
 {
 
-  rms = -1;
-  short sample_buffer[PDM_BUFFER_SIZE];
-  int bytes_available = PDM.available();
-  PDM.read(sample_buffer, bytes_available);
-
-  // calculate RMS (root mean square) from sample_buffer
-  unsigned int sum = 0;
-  for (unsigned short i = 0; i < (bytes_available / 2); i++)
-    sum += pow(sample_buffer[i], 2);
-  rms = sqrt(float(sum) / (float(bytes_available) / 2.0));
+  
 }
 
 void setup()
@@ -48,16 +36,8 @@ void setup()
   while (!Serial)
     ;
 
-  PDM.onReceive(onPDMdata);
-  PDM.setBufferSize(PDM_BUFFER_SIZE);
-  PDM.setGain(PDM_SOUND_GAIN);
 
-  if (!PDM.begin(1, 16000))
-  { // start PDM mic and sampling at 16 KHz
-    Serial.println("Failed to start PDM!");
-    while (1)
-      ;
-  }
+  
 
   pinMode(LED_BUILTIN, OUTPUT);
 
@@ -76,10 +56,7 @@ void setup()
 void loop()
 {
 
-  // waiting until sampling triggered
-  while (rms < SAMPLE_THRESHOLD)
-    ;
-
+  
   digitalWrite(LED_BUILTIN, HIGH);
   for (int i = 0; i < FEATURE_SIZE; i++)
   { // sampling
