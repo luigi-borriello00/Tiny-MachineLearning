@@ -9,7 +9,7 @@
 #define NUMBER_OF_LABELS 5                                          // number of voice labels
 const String words[NUMBER_OF_LABELS] = {"O", "I", "U", "E", "A"}; // words for each labell
 #define FEATURE_SIZE 42
-#define TEST_SIZE 30
+#define TEST_SIZE 100
 
 int predicted_labels[TEST_SIZE];
 
@@ -34,6 +34,7 @@ void setup()
 
 void loop()
 {
+  long start_time = millis();
   // for each element in X_test
   for (int i = 0; i < TEST_SIZE; i++)
   {
@@ -62,6 +63,9 @@ void loop()
     // add max_index to the array of predicted labels
     predicted_labels[i] = max_index;
   }
+  long end_time = millis();
+  Serial.print("Time to predict the testSet ");
+  Serial.println(end_time - start_time);
   // print out the predicted labels
   Serial.println("Predicted labels: \n [");
   for (int i = 0; i < TEST_SIZE; i++)
