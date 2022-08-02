@@ -1,7 +1,7 @@
-Algoritmo,InfTime
-RF,6
-CART,1
-LR,1
-SVC,1240
-GNB,7
-NN,72
+Algoritmo,InfTime3,InfTime7
+RF,6,23
+CART,1,1
+LR,1,11
+SVC,1240,10465
+GNB,7,43
+NN,72,226

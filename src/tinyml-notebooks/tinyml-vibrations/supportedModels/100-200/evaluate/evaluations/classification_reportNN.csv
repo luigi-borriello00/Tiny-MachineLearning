@@ -1,0 +1,4 @@
+class,precision,recall,f1_score,accuracy
+100ms,1.0,1.0,1.0,   1.00
+150ms,1.0,1.0,1.0,   1.00
+200ms,1.0,1.0,1.0,   1.00

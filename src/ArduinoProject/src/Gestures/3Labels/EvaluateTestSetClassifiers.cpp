@@ -11,7 +11,7 @@
 #define NUMBER_OF_LABELS 3 // number of voice labels
 const String words[NUMBER_OF_LABELS] = {"O", "I", "U"}; // words for each label
 #define FEATURE_SIZE 42
-#define TEST_SIZE 18
+#define TEST_SIZE 60
 
 /* Uncomment the model that yout want to test */
 //Eloquent::ML::Port::RandomForest model;
