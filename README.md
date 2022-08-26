@@ -16,3 +16,4 @@ Export Machine Learning models from different Tasks on Arduino Nano 33 BLE and e
 * Frequency detection.
 * Vibrations detection.
 * Keyword spotting.
+* Gesture spotting.
