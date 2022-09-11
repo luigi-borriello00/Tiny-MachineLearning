@@ -6,10 +6,10 @@
 #include "Models/NNmodel.h"        // TF Lite model file
 #include "TestSet.h"
 
-#define NUMBER_OF_LABELS 5                                          // number of voice labels
-const String words[NUMBER_OF_LABELS] = {"O", "I", "U", "E", "A"}; // words for each labell
+#define NUMBER_OF_LABELS 15                                          // number of voice labels
+const String words[NUMBER_OF_LABELS] = {"O", "I", "U", "E", "A", "B", "D", "G", "L", "M", "N", "P", "Q", "V", "W"}; // words for each labell
 #define FEATURE_SIZE 42
-#define TEST_SIZE 100
+#define TEST_SIZE 300
 
 int predicted_labels[TEST_SIZE];
 
