@@ -33,6 +33,7 @@ void setup()
 
 void loop()
 {
+  long start = millis();
   // for each element in X_test
   for (int i = 0; i < TEST_SIZE; i++)
   {
@@ -61,6 +62,10 @@ void loop()
     // add max_index to the array of predicted labels
     predicted_labels[i] = max_index;
   }
+  // print out the time it took to predict all the test set
+  Serial.print("Time to predict all test set: ");
+  long totTime = millis() - start;
+  Serial.println(totTime);
   // print out the predicted labels
   Serial.println("Predicted labels: \n [");
   for (int i = 0; i < TEST_SIZE; i++)

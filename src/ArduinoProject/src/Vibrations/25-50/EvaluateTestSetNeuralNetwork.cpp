@@ -3,7 +3,6 @@
 #include <math.h>
 #include <EloquentTinyML.h> // https://github.com/eloquentarduino/EloquentTinyML
 #include "Models/NNmodel.h" // TF Lite model file
-#include "../../Functions.h"
 #include "TestSet.h"
 
 #define NUMBER_OF_LABELS 2                                                                                                    // number of voice labels
@@ -34,6 +33,7 @@ void setup()
 
 void loop()
 {
+  long start = millis();
   // for each element in X_test
   for (int i = 0; i < TEST_SIZE; i++)
   {
@@ -62,6 +62,9 @@ void loop()
     // add max_index to the array of predicted labels
     predicted_labels[i] = max_index;
   }
+  Serial.print("Time to predict: ");
+  long finish = millis() - start;
+  Serial.println(finish);
   // print out the predicted labels
   Serial.println("Predicted labels: \n [");
   for (int i = 0; i < TEST_SIZE; i++)

@@ -3,10 +3,10 @@
 #include "TestSet.h"
 /* Uncomment the model that yout want to test */
 //#include "Models/RF.h" // model file
-//#include "Models/CART.h"            // model file
+#include "Models/CART.h"            // model file
 //#include "Models/SVC.h"            // model file
 //#include "Models/LR.h"           // model file
-#include "Models/GNB.h"            // model file
+//#include "Models/GNB.h"            // model file
 #define NUMBER_OF_LABELS 6                                                                                                      // number of voice labels
 const String words[NUMBER_OF_LABELS] = {"0", "1", "2", "3", "4", "5"}; // words for each label
 #define FEATURE_SIZE 60
@@ -14,10 +14,10 @@ const String words[NUMBER_OF_LABELS] = {"0", "1", "2", "3", "4", "5"}; // words 
 
 /* Uncomment the model that yout want to test */
 // Eloquent::ML::Port::RandomForest model;
-// Eloquent::ML::Port::DecisionTree model;
+ Eloquent::ML::Port::DecisionTree model;
 // Eloquent::ML::Port::SVM model;
 // Eloquent::ML::Port::LogisticRegression model;
- Eloquent::ML::Port::GaussianNB model;
+// Eloquent::ML::Port::GaussianNB model;
 
 TestSet testSet;
 int prediction[TEST_SIZE];
